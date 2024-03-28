@@ -26,7 +26,16 @@ class LaptopRepository implements IRepository<ILaptop> {
     }
 
     retrieveBy(sn: string): Promise<ILaptop | undefined> {
-        return Promise.resolve(undefined);
+        let query: string = 'SELECT * FROM laptops where SerialNumber = ?';
+        return new Promise((resolve, reject) => {
+                connection.query<ILaptop[]>(query, [sn], (err, res) => {
+                    if (err) {
+                        reject(err);
+                    } else
+                        resolve(res?.[0]);
+                })
+            }
+        );
     }
 
     save(laptop: ILaptop): Promise<ILaptop> {
