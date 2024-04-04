@@ -1,8 +1,5 @@
 'use client'
-import {Scanner} from '@yudiel/react-qr-scanner'
-import ClientOnly from "@/components/clientonly";
 import {useState} from "react";
-import FormScanner from "@/components/scanner";
 
 const App = () => {
     const [result, setResult] = useState("");

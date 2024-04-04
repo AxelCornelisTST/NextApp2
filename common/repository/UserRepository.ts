@@ -1,6 +1,6 @@
-import {ILaptop} from "@/app/models/ILaptop";
-import {connection} from "@/app/database";
-import {IRepository} from "@/app/repository/IRepository";
+import {ILaptop} from "@/common/models/ILaptop";
+import {connection} from "@/common/database";
+import {IRepository} from "@/common/repository/IRepository";
 
 //https://github.com/bezkoder/node-js-typescript-mysql-rest-api
 

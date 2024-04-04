@@ -1,4 +1,4 @@
-import {ILaptop} from "@/app/models/ILaptop";
+import {ILaptop} from "@/common/models/ILaptop";
 
 export interface IRepository<T> {
     save(model: T): Promise<T>;
