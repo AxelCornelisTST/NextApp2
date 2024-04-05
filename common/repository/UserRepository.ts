@@ -1,11 +1,11 @@
-import {ILaptop} from "@/common/models/ILaptop";
-import {connection} from "@/common/database";
+import {dataBasePoolConnection} from "@/common/database";
 import {IRepository} from "@/common/repository/IRepository";
+import {IUser} from "@/common/models/IUser";
 
 //https://github.com/bezkoder/node-js-typescript-mysql-rest-api
 
-class LaptopRepository implements IRepository<ILaptop> {
-    delete(sn: number): Promise<number> {
+class UserRepository implements IRepository<IUser> {
+    delete(id: number): Promise<number> {
         return Promise.resolve(0);
     }
 
@@ -13,29 +13,36 @@ class LaptopRepository implements IRepository<ILaptop> {
         return Promise.resolve(0);
     }
 
-    retrieveAll(): Promise<ILaptop[]> {
-        let query: string = 'SELECT * FROM laptops';
-
+    retrieveAll(): Promise<IUser[]> {
+        let query: string = 'SELECT * FROM users';
         return new Promise((resolve, reject) => {
-            connection.query<ILaptop[]>(query, (err, res) => {
+            dataBasePoolConnection.query<IUser[]>(query, (err, res) => {
                 if (err) reject(err);
                 else resolve(res);
             });
         });
     }
 
-    retrieveBy(sn: number): Promise<ILaptop | undefined> {
-        return Promise.resolve(undefined);
+    retrieveBy(id: number): Promise<IUser | undefined> {
+        let query: string = 'SELECT * FROM users where UserID = ?';
+        return new Promise((resolve, reject) => {
+                dataBasePoolConnection.query<IUser[]>(query, [id], (err, res) => {
+                    if (err) {
+                        reject(err);
+                    } else
+                        resolve(res?.[0]);
+                })
+            }
+        );    }
+
+    save(user: IUser): Promise<IUser> {
+        return Promise.resolve(user);
     }
 
-    save(laptop: ILaptop): Promise<ILaptop> {
-        return Promise.resolve(laptop);
-    }
-
-    update(laptop: ILaptop): Promise<number> {
+    update(user: IUser): Promise<number> {
         return Promise.resolve(0);
     }
 
 }
 
-export default new LaptopRepository();
+export default new UserRepository();
