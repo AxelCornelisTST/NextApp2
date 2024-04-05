@@ -1,6 +1,6 @@
 import mysql from 'mysql2'
 
-export const connection = mysql.createPool({
+export const dataBasePoolConnection = mysql.createPool({
     database: "inventory",
     host: "localhost",
     user: "root",
