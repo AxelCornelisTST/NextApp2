@@ -4,24 +4,24 @@ import {aboutPage, homePage, lookupPage, scanPage} from "@/components/routerhelp
 export class NavigationRegistry {
     public static values: INav[] = [
         {
-            route: homePage(),
-            name: "Home"
+            routeCallback: isAuth => homePage(),
+            nameCallback: isAuth => "Home"
         },
         {
-            route: scanPage(),
-            name: "Scan Now"
+            routeCallback: isAuth => isAuth ? scanPage() : "",
+            nameCallback: isAuth => isAuth ? "Scan Now" : ""
         },
         {
-            route: lookupPage(),
-            name: "SN Lookup"
+            routeCallback: isAuth => isAuth ? lookupPage() : "",
+            nameCallback: isAuth => isAuth ? "SN Lookup" : ""
         },
         {
-            route: aboutPage(),
-            name: "About"
+            routeCallback: isAuth => aboutPage(),
+            nameCallback: isAuth => "About"
         },
         {
-            route: "/api/auth/logout",
-            name: "Logout"
+            routeCallback: isAuth => isAuth ? "/api/auth/logout" : "/api/auth/login",
+            nameCallback: isAuth => isAuth ? "Logout" : "Login"
         }
     ];
 }
