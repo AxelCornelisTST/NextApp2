@@ -1,14 +1,14 @@
 import {FunctionComponent, useState} from "react";
 import ClientOnly from "@/components/clientonly";
 import {Scanner} from "@yudiel/react-qr-scanner";
-import {isHTTPMethod} from "next/dist/server/web/http";
 
 interface Props {
+    toggleLoader: boolean,
     show: boolean,
     resultCallBack: (text: string) => void
 }
 
-const FormScanner: FunctionComponent<Props> = ({show, resultCallBack}) => {
+const FormScanner: FunctionComponent<Props> = ({toggleLoader, show, resultCallBack}) => {
     const [isError, setError] = useState(false);
     const [isLoading, setLoading] = useState(false)
     return (
@@ -33,7 +33,8 @@ const FormScanner: FunctionComponent<Props> = ({show, resultCallBack}) => {
                     <ClientOnly>
                         <Scanner
                             onResult={text => {
-                                setLoading(true)
+                                if (toggleLoader)
+                                    setLoading(true)
                                 show = false;
                                 resultCallBack(text)
                             }}
