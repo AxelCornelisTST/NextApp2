@@ -2,7 +2,6 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {NavigationRegistry} from "@/common/registry/NavigationRegistry";
 import Link from "next/link";
-import {hidden} from "next/dist/lib/picocolors";
 
 const Navbar: FunctionComponent = () => {
 
@@ -57,9 +56,3 @@ const Navbar: FunctionComponent = () => {
 ;
 
 export default Navbar;
-
-// {
-//     NavigationRegistry.values.map(value => {
-//         return <Link key={value.route} href={value.route}>{value.name}</Link>
-//     })
-// }
