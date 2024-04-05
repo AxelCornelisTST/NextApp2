@@ -1,18 +1,23 @@
 import {INav} from "@/common/interface/INav";
+import {aboutPage, homePage, lookupPage, scanPage} from "@/components/routerhelper";
 
 export class NavigationRegistry {
     public static values: INav[] = [
         {
-            route: "/",
+            route: homePage(),
             name: "Home"
         },
         {
-            route: "/about",
-            name: "About"
+            route: scanPage(),
+            name: "Scan Now"
         },
         {
-            route: "/info",
-            name: "Scan Now"
+            route: lookupPage(),
+            name: "SN Lookup"
+        },
+        {
+            route: aboutPage(),
+            name: "About"
         }
     ];
 }
