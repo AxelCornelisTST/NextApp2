@@ -18,6 +18,10 @@ export class NavigationRegistry {
         {
             route: aboutPage(),
             name: "About"
+        },
+        {
+            route: "/api/auth/logout",
+            name: "Logout"
         }
     ];
 }
