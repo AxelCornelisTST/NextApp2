@@ -2,8 +2,9 @@
 import {useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
 import {infoPage} from "@/components/routerhelper";
+import {withPageAuthRequired} from '@auth0/nextjs-auth0/client';
 
-export default function Lookup() {
+export default withPageAuthRequired(function Profile({user}) {
     const {pending} = useFormStatus()
     const router = useRouter();
 
@@ -35,4 +36,4 @@ export default function Lookup() {
             </form>
         </div>
     )
-}
+})
