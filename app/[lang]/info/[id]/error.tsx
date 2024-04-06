@@ -1,14 +1,13 @@
 "use client"
-import {useRouter} from "next/navigation";
-import {scanPage} from "@/components/routerhelper";
-import BackButton from "@/components/backbutton";
+import BackButton from "@/components/BackButton";
+import TranslateClient from "@/components/TranslateClient";
+import {useParams, useSearchParams} from "next/navigation";
 
 export default function EntryNotFound() {
-    const router = useRouter();
-
+    const params = useParams<{ lang: string }>()
     return (
         <div className="items-center flex flex-col p-10 justify-between">
-            <p className={"text-red-600 text-center"}>The connection to the database failed</p>
+            <TranslateClient lang={params.lang} text={"connection_failed"} className={"text-red-600 text-center"}/>
             <BackButton/>
         </div>
     );

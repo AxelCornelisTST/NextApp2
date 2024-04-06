@@ -5,23 +5,23 @@ export class NavigationRegistry {
     public static values: INav[] = [
         {
             routeCallback: isAuth => homePage(),
-            nameCallback: isAuth => "Home"
+            nameCallback: isAuth => "button_nav_home"
         },
         {
             routeCallback: isAuth => isAuth ? scanPage() : "",
-            nameCallback: isAuth => isAuth ? "Scan Now" : ""
+            nameCallback: isAuth => isAuth ? "button_nav_scannow" : ""
         },
         {
             routeCallback: isAuth => isAuth ? lookupPage() : "",
-            nameCallback: isAuth => isAuth ? "SN Lookup" : ""
+            nameCallback: isAuth => isAuth ? "button_nav_lookup" : ""
         },
         {
             routeCallback: isAuth => aboutPage(),
-            nameCallback: isAuth => "About"
+            nameCallback: isAuth => "button_nav_about"
         },
         {
             routeCallback: isAuth => isAuth ? "/api/auth/logout" : "/api/auth/login",
-            nameCallback: isAuth => isAuth ? "Logout" : "Login"
+            nameCallback: isAuth => isAuth ? "button_nav_logout" : "button_nav_login"
         }
     ];
 }

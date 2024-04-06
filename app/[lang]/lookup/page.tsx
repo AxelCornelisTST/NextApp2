@@ -1,16 +1,18 @@
 "use client"
-import {useRouter} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
 import {infoPage} from "@/components/routerhelper";
 import {withPageAuthRequired} from '@auth0/nextjs-auth0/client';
+import TranslateClient from "@/components/TranslateClient";
 
 export default withPageAuthRequired(function Profile({user}) {
     const {pending} = useFormStatus()
     const router = useRouter();
+    const params = useParams<{ lang: string }>()
 
     return (
         <div className="flex flex-col w-screen p-10 items-center">
-            <h1 className="font-bold text-xl">Lookup</h1>
+            <TranslateClient lang={params.lang} text={"title_lookup"} className="font-bold text-xl"/>
 
             <form className="w-screen max-w-screen-md px-5 pt-10" onSubmit={event => {
                 event.preventDefault();

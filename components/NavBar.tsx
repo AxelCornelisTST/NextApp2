@@ -3,8 +3,10 @@ import React, {FunctionComponent, useEffect, useState} from "react";
 import {NavigationRegistry} from "@/common/registry/NavigationRegistry";
 import Link from "next/link";
 import {useUser} from "@auth0/nextjs-auth0/client";
+import TranslateServer from "@/components/TranslateServer";
+import TranslateClient from "@/components/TranslateClient";
 
-const NavBar: FunctionComponent = () => {
+const NavBar: FunctionComponent<{ lang: string }> = (props) => {
 
         const {user, error, isLoading} = useUser();
         const [isHidden, setHidden] = useState(true);
@@ -44,7 +46,8 @@ const NavBar: FunctionComponent = () => {
                                         onClick={onClick}
                                         className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                                         key={route}
-                                        href={route}>{name}
+                                        href={`/${props.lang}/${route}`}>
+                                        <TranslateClient lang={props.lang} text={name}/>
                                     </Link> : undefined
                                 })
                             }
