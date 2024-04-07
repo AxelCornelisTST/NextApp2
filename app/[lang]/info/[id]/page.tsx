@@ -6,13 +6,7 @@ import {IUser} from "@/common/models/IUser";
 import BackButton from "@/components/BackButton";
 import TranslateServer from "@/components/TranslateServer";
 
-interface Props {
-    searchParams?: {
-        id: string;
-    };
-}
-
-async function Page({params}: { params: { lang: string, id: string } }) {
+export default async function Page({params}: { params: { lang: string, id: string } }) {
     const id = params && !Array.isArray(params.id) ? params.id : "err";
     const lang = params && !Array.isArray(params.lang) ? params.lang : "en"
 
