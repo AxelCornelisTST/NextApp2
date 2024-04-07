@@ -20,7 +20,7 @@ export class NavigationRegistry {
             nameCallback: isAuth => "button_nav_about"
         },
         {
-            routeCallback: isAuth => isAuth ? "/api/auth/logout" : "/api/auth/login",
+            routeCallback: isAuth => isAuth ? "/api/auth/signout" : "/api/auth/signin",
             nameCallback: isAuth => isAuth ? "button_nav_logout" : "button_nav_login"
         }
     ];

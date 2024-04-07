@@ -2,10 +2,9 @@
 import {useParams, useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
 import {infoPage} from "@/components/routerhelper";
-import {withPageAuthRequired} from '@auth0/nextjs-auth0/client';
 import TranslateClient from "@/components/TranslateClient";
 
-export default withPageAuthRequired(function Profile({user}) {
+export default function Lookup() {
     const {pending} = useFormStatus()
     const router = useRouter();
     const params = useParams<{ lang: string }>()
@@ -38,4 +37,4 @@ export default withPageAuthRequired(function Profile({user}) {
             </form>
         </div>
     )
-})
+}

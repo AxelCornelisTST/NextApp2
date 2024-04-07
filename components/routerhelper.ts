@@ -1,21 +1,21 @@
 export function infoPage(data: string) {
     if (data)
-        return "./info/" + data
-    return "/"
+        return "/$lang/info/" + data
+    return homePage()
 }
 
 export function scanPage() {
-    return "/scannow"
+    return "/$lang/scannow"
 }
 
 export function homePage() {
-    return "/"
+    return "/$lang"
 }
 
 export function lookupPage() {
-    return "/lookup"
+    return "/$lang//lookup"
 }
 
 export function aboutPage() {
-    return "/about"
+    return "/$lang/about"
 }

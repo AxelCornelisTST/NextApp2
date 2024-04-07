@@ -2,8 +2,8 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import {UserProvider} from "@auth0/nextjs-auth0/client";
 import {dir} from 'i18next'
+import NextAuthProvider from "@/components/NextAuthProvider";
 
 const languages: string[] = ['en', 'de'];
 
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
 export default function RootLayout({children, params: {lang}}: RootLayoutProps): JSX.Element {
     return (
         <html lang={lang} dir={dir(lang)}>
-        <UserProvider>
+        <NextAuthProvider>
             <body className={`${inter.className}`}>
             <NavBar lang={lang}/>
             {children}
             </body>
-        </UserProvider>
+        </NextAuthProvider>
         </html>
     );
 }
