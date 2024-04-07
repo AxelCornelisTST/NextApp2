@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import {useParams, useRouter} from "next/navigation";
 import {infoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/TranslateClient";
-import {useTranslation} from "@/app/i18n/client";
 
 
 export default function Scannow() {
@@ -21,7 +20,7 @@ export default function Scannow() {
             router.push(infoPage(scanResult));
 
     }, [scanResult])
-    const {t} = useTranslation(params.lang)
+
     return (
         <div className="flex flex-col p-10 items-center">
             <TranslateClient lang={params.lang} text={'title_scan'} className={"font-bold text-xl"}/>

@@ -8,9 +8,6 @@ if (!githubClientId || !githubClientSecret) {
 }
 
 const config = {
-    // pages: {
-    //     signIn: "/api/auth/signin",
-    // },
     providers: [
         Github({clientId: githubClientId, clientSecret: githubClientSecret})
     ],
