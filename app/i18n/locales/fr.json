@@ -1,4 +1,5 @@
 {
+  "access_denied" : "Acces non-authorisé",
   "button_add_user": "Ajouter utiliseteur",
   "button_back": "Retour",
   "button_nav_about": "A propos",
