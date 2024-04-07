@@ -13,9 +13,18 @@ export function homePage() {
 }
 
 export function lookupPage() {
-    return "/$lang//lookup"
+    return "/$lang/lookup"
 }
 
 export function aboutPage() {
     return "/$lang/about"
 }
+
+export function logoutPage() {
+    return "/api/auth/signout";
+}
+
+export function loginPage() {
+    return "/api/auth/signin";
+}
+

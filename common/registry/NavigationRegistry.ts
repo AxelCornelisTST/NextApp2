@@ -1,5 +1,5 @@
 import {INav} from "@/common/interface/INav";
-import {aboutPage, homePage, lookupPage, scanPage} from "@/components/routerhelper";
+import {aboutPage, homePage, loginPage, logoutPage, lookupPage, scanPage} from "@/components/routerhelper";
 
 export class NavigationRegistry {
     public static values: INav[] = [
@@ -20,7 +20,7 @@ export class NavigationRegistry {
             nameCallback: isAuth => "button_nav_about"
         },
         {
-            routeCallback: isAuth => isAuth ? "/api/auth/signout" : "/api/auth/signin",
+            routeCallback: isAuth => isAuth ? logoutPage() : loginPage(),
             nameCallback: isAuth => isAuth ? "button_nav_logout" : "button_nav_login"
         }
     ];
