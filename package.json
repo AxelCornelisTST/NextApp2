@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/typeorm-adapter": "^1.6.2",
     "@yudiel/react-qr-scanner": "^2.0.0-beta.3",
     "accept-language": "^3.0.18",
     "i18next": "^23.10.1",
@@ -22,7 +23,9 @@
     "react-cookie": "^7.1.4",
     "react-dom": "^18",
     "react-i18next": "^14.1.0",
-    "tls": "^0.0.1"
+    "tls": "^0.0.1",
+    "typeorm": "^0.3.20",
+    "typeorm-naming-strategies": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.30",
