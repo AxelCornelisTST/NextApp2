@@ -1,6 +1,6 @@
 export function infoPage(data: string) {
     if (data)
-        return "/$lang/info/" + data
+        return "./info/" + data
     return homePage()
 }
 
