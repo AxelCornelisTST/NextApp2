@@ -1,5 +1,5 @@
 "use client"
-import FormScanner from "@/components/scanner";
+import FormScanner from "@/components/FormScanner";
 import {useEffect, useState} from "react";
 import {useParams, useRouter} from "next/navigation";
 import {infoPage} from "@/components/routerhelper";
