@@ -10,6 +10,7 @@
   "button_nav_scannow": "Scannen",
   "button_submit": "Indienen",
   "connection_failed": "De verbinding met de database faalde",
+  "homepage_greeting" : "Hallo {{name}}, u kan de navigatiebalk gebruiken om een scan te starten",
   "homepage_login_request": "Log in om onze diensten te gebruiken ",
   "laptop_brand": "Merk",
   "laptop_core": "Core",

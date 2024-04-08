@@ -10,6 +10,7 @@
   "button_nav_scannow": "Scanner",
   "button_submit": "Envoyer",
   "connection_failed": "La connection a la base de donné a échoué",
+  "homepage_greeting" : "Bonjour {{name}}, vous pouvez utiliser la barre de navigation pour commencer un scan",
   "homepage_login_request": "Connectez-vous pour utiliser nos services",
   "laptop_brand": "Marque",
   "laptop_core": "Coeur",

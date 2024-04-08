@@ -10,6 +10,7 @@
   "button_nav_scannow": "Scan Now",
   "button_submit": "Submit",
   "connection_failed": "The connection to the database failed",
+  "homepage_greeting" : "Hi {{name}}, you may use the navbar to start scanning",
   "homepage_login_request": "Please log in to start using our services",
   "laptop_brand": "Brand",
   "laptop_core": "Core",
