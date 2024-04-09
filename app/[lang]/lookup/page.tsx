@@ -3,11 +3,16 @@ import {useParams, useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
 import {infoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/TranslateClient";
+import {useSession} from "next-auth/react";
+import AccessDenied from "@/components/AccessDenied";
 
 export default function Lookup() {
     const {pending} = useFormStatus()
     const router = useRouter();
     const params = useParams<{ lang: string }>()
+    const session = useSession();
+    if (session.status !== "authenticated")
+        return <AccessDenied lang={params.lang}/>
 
     return (
         <div className="flex flex-col w-screen p-10 items-center">

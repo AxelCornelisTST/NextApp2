@@ -5,11 +5,17 @@ import UserRepository from "@/common/repository/UserRepository";
 import {ILaptopUser} from "@/common/models/ILaptopUser";
 import BackButton from "@/components/BackButton";
 import TranslateServer from "@/components/TranslateServer";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import AccessDenied from "@/components/AccessDenied";
 
 export default async function Page({params}: { params: { lang: string, id: string } }) {
+    const session = getServerSession(authOptions);
+    if (!session)
+        return <AccessDenied lang={params.lang}/>
+
     const id = params && !Array.isArray(params.id) ? params.id : "err";
     const lang = params && !Array.isArray(params.lang) ? params.lang : "en"
-
     const laptop = await LaptopRepository.retrieveBy(id);
     let user: ILaptopUser | undefined
     if (laptop)
