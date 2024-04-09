@@ -4,8 +4,6 @@ import {TypeORMAdapter} from "@auth/typeorm-adapter";
 import {Adapter} from "next-auth/adapters";
 import {ConnectionOptions} from "typeorm";
 import {SnakeNamingStrategy} from 'typeorm-naming-strategies'
-import {param} from "ts-interface-checker";
-import {configSchema} from "next/dist/server/config-schema";
 
 const githubClientId = process.env.GITHUB_ID;
 const githubClientSecret = process.env.GITHUB_SECRET;

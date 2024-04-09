@@ -1,8 +1,6 @@
-import {NextRequest, NextResponse} from 'next/server'
+import {NextResponse} from 'next/server'
 import acceptLanguage from 'accept-language'
 import {cookieName, fallbackLng, languages} from './app/i18n/settings'
-import {loginPage} from "./components/routerhelper";
-import {getSession} from "next-auth/react";
 
 acceptLanguage.languages(languages)
 

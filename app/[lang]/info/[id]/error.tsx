@@ -2,8 +2,6 @@
 import BackButton from "@/components/BackButton";
 import TranslateClient from "@/components/TranslateClient";
 import {useParams} from "next/navigation";
-import {useSession} from "next-auth/react";
-import AccessDenied from "@/components/AccessDenied";
 
 export default function EntryNotFound() {
     const params = useParams<{ lang: string }>()
