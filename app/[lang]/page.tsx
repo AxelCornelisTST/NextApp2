@@ -3,10 +3,10 @@ import Image from "next/image";
 import TranslateServer from "@/components/TranslateServer";
 import {getServerSession} from "next-auth";
 import {getSessionName} from "@/common/sessionconverter";
+import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 
 export default async function Home({params}: { params: { lang: string } }) {
-    const session = await getServerSession()
-
+    const session = await getServerSession(authOptions)
     const name: string = getSessionName(session);
 
     return (

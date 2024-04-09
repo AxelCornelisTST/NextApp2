@@ -4,6 +4,8 @@ import {TypeORMAdapter} from "@auth/typeorm-adapter";
 import {Adapter} from "next-auth/adapters";
 import {ConnectionOptions} from "typeorm";
 import {SnakeNamingStrategy} from 'typeorm-naming-strategies'
+import {param} from "ts-interface-checker";
+import {configSchema} from "next/dist/server/config-schema";
 
 const githubClientId = process.env.GITHUB_ID;
 const githubClientSecret = process.env.GITHUB_SECRET;
@@ -22,13 +24,16 @@ const connection: ConnectionOptions = {
     password: "root",
     database: "inventory",
     namingStrategy: new SnakeNamingStrategy(),
-    synchronize: false
+    synchronize: false,
 }
-const config: AuthOptions = {
+
+export const authOptions: AuthOptions = {
     providers: [
         Github({
             clientId: githubClientId,
             clientSecret: githubClientSecret,
+            allowDangerousEmailAccountLinking: true,
+
         })
     ],
     adapter: TypeORMAdapter(connection) as Adapter,
@@ -45,6 +50,5 @@ const config: AuthOptions = {
     }
 }
 
-const handler = NextAuth(config)
-
+const handler = NextAuth(authOptions)
 export {handler as GET, handler as POST}

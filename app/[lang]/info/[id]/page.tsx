@@ -2,7 +2,7 @@
 import LaptopRepository from "@/common/repository/LaptopRepository";
 import LaptopForm from "@/components/LaptopForm";
 import UserRepository from "@/common/repository/UserRepository";
-import {IUser} from "@/common/models/IUser";
+import {ILaptopUser} from "@/common/models/ILaptopUser";
 import BackButton from "@/components/BackButton";
 import TranslateServer from "@/components/TranslateServer";
 
@@ -11,7 +11,7 @@ export default async function Page({params}: { params: { lang: string, id: strin
     const lang = params && !Array.isArray(params.lang) ? params.lang : "en"
 
     const laptop = await LaptopRepository.retrieveBy(id);
-    let user: IUser | undefined
+    let user: ILaptopUser | undefined
     if (laptop)
         user = await UserRepository.retrieveBy(laptop.UserID);
     return (

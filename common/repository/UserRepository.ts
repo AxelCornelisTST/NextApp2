@@ -1,10 +1,10 @@
 import {dataBasePoolConnection} from "@/common/database";
 import {IRepository} from "@/common/repository/IRepository";
-import {IUser} from "@/common/models/IUser";
+import {ILaptopUser} from "@/common/models/ILaptopUser";
 
 //https://github.com/bezkoder/node-js-typescript-mysql-rest-api
 
-class UserRepository implements IRepository<IUser> {
+class UserRepository implements IRepository<ILaptopUser> {
     delete(id: number): Promise<number> {
         return Promise.resolve(0);
     }
@@ -13,20 +13,20 @@ class UserRepository implements IRepository<IUser> {
         return Promise.resolve(0);
     }
 
-    retrieveAll(): Promise<IUser[]> {
+    retrieveAll(): Promise<ILaptopUser[]> {
         let query: string = 'SELECT * FROM users';
         return new Promise((resolve, reject) => {
-            dataBasePoolConnection.query<IUser[]>(query, (err, res) => {
+            dataBasePoolConnection.query<ILaptopUser[]>(query, (err, res) => {
                 if (err) reject(err);
                 else resolve(res);
             });
         });
     }
 
-    retrieveBy(id: number): Promise<IUser | undefined> {
+    retrieveBy(id: number): Promise<ILaptopUser | undefined> {
         let query: string = 'SELECT * FROM users where UserID = ?';
         return new Promise((resolve, reject) => {
-                dataBasePoolConnection.query<IUser[]>(query, [id], (err, res) => {
+                dataBasePoolConnection.query<ILaptopUser[]>(query, [id], (err, res) => {
                     if (err) {
                         reject(err);
                     } else
@@ -35,11 +35,11 @@ class UserRepository implements IRepository<IUser> {
             }
         );    }
 
-    save(user: IUser): Promise<IUser> {
+    save(user: ILaptopUser): Promise<ILaptopUser> {
         return Promise.resolve(user);
     }
 
-    update(user: IUser): Promise<number> {
+    update(user: ILaptopUser): Promise<number> {
         return Promise.resolve(0);
     }
 

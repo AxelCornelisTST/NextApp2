@@ -1,6 +1,6 @@
 import {RowDataPacket} from "mysql2";
 
-export interface IUser extends RowDataPacket {
+export interface ILaptopUser extends RowDataPacket {
     UserID: number;
     Name: string;
     FamilyName: string;
