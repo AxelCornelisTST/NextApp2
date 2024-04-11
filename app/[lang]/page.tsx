@@ -10,20 +10,20 @@ export default async function Home({params}: { params: { lang: string } }) {
     const name: string = getSessionName(session);
 
     return (
-        <div className="items-center flex flex-col justify-between">
-            <TranslateServer lang={params.lang} text={'welcome'} className={"py-10 font-bold text-4xl"}/>
-            <Image src={"/img.png"} alt={"laptop icon"} width={512} height={512} className={"w-fit"}/>
+        <div className="items-center flex flex-col justify-between h-max">
+            <TranslateServer lang={params.lang} text={'Inventory DataBase Scanner'}
+                             className={"text-center py-10 font-bold text-4xl backdrop-blur-sm"}/>
             {
                 session ?
                     isAuthorized(session) ?
                         <TranslateServer lang={params.lang} text={'homepage_greeting'} variables={{name}}
-                                         className={"px-10 py-5 text-xl text-center"}/>
+                                         className={"px-10 py-5 text-xl text-center backdrop-blur-sm"}/>
                         :
                         <TranslateServer lang={params.lang} text={'homepage_contact_admin'} variables={{name}}
-                                         className={"px-10 py-5 text-xl text-center"}/>
+                                         className={"px-10 py-5 text-xl text-center backdrop-blur-sm"}/>
                     :
                     <TranslateServer lang={params.lang} text={'homepage_login_request'}
-                                     className={"py-10 text-xl text-center"}/>
+                                     className={"py-10 text-xl text-center backdrop-blur-sm"}/>
             }
         </div>
     );
