@@ -1,9 +1,11 @@
 import Github from "next-auth/providers/github";
-import NextAuth, {AuthOptions} from "next-auth";
 import {TypeORMAdapter} from "@auth/typeorm-adapter";
 import {Adapter} from "next-auth/adapters";
 import {ConnectionOptions} from "typeorm";
 import {SnakeNamingStrategy} from 'typeorm-naming-strategies'
+import NextAuth, {AuthOptions} from "next-auth";
+import * as entities from "@/lib/entities"
+
 
 const githubClientId = process.env.GITHUB_ID;
 const githubClientSecret = process.env.GITHUB_SECRET;
@@ -22,29 +24,38 @@ const connection: ConnectionOptions = {
     password: "root",
     database: "inventory",
     namingStrategy: new SnakeNamingStrategy(),
-    synchronize: false,
+    synchronize: true,
 }
 
 export const authOptions: AuthOptions = {
+    debug: true,
     providers: [
         Github({
             clientId: githubClientId,
             clientSecret: githubClientSecret,
-            allowDangerousEmailAccountLinking: true,
-
+            allowDangerousEmailAccountLinking: true
         })
     ],
-    adapter: TypeORMAdapter(connection) as Adapter,
-    session: {
-        // Choose how you want to save the user session.
-        // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.
-        // If you use an `adapter` however, we default it to `"database"` instead.
-        // You can still force a JWT session by explicitly defining `"jwt"`.
-        // When using `"database"`, the session cookie will only contain a `sessionToken` value,
-        // which is used to look up the session in the database.
-        strategy: "database",
-        //expressed in seconds
-        maxAge: 30 //Seconds
+    adapter: TypeORMAdapter(connection, {entities}) as Adapter,
+    session:
+        {
+            // Choose how you want to save the user session.
+            // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.
+            // If you use an `adapter` however, we default it to `"database"` instead.
+            // You can still force a JWT session by explicitly defining `"jwt"`.
+            // When using `"database"`, the session cookie will only contain a `sessionToken` value,
+            // which is used to look up the session in the database.
+            strategy: "database",
+            //expressed in seconds
+            maxAge:
+                60 * 15 //minutes
+        },
+    callbacks: {
+        async session({session, user}) {
+            // Send properties to the client, like an access_token and user id from a provider.
+            session.user.role = user.role
+            return session
+        }
     }
 }
 
