@@ -11,7 +11,7 @@ export default async function Home({params}: { params: { lang: string } }) {
 
     return (
         <div className="items-center flex flex-col justify-between h-max">
-            <TranslateServer lang={params.lang} text={'Inventory DataBase Scanner'}
+            <TranslateServer lang={params.lang} text={'app_title'}
                              className={"text-center py-10 font-bold text-4xl backdrop-blur-sm"}/>
             {
                 session ?
