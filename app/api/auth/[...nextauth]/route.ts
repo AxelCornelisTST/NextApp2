@@ -29,6 +29,9 @@ const connection: ConnectionOptions = {
 
 export const authOptions: AuthOptions = {
     debug: true,
+    pages: {
+        signIn: "/signin"
+    },
     providers: [
         Github({
             clientId: githubClientId,
