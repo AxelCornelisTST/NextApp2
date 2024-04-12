@@ -1,7 +1,9 @@
 {
   "access_denied": "Access Denied",
+  "app_title": "Laptop Inventory Database Scanner",
   "button_add_user": "Add User",
   "button_back": "Go Back",
+  "button_github": "Sign in with GitHub",
   "button_nav_about": "About",
   "button_nav_home": "Home",
   "button_nav_login": "Login",
