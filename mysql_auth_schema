@@ -1,0 +1,14 @@
+# CREATE SCHEMA `inventory` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+CREATE TABLE user
+(
+    id VARCHAR(255) PRIMARY KEY,
+    role VARCHAR(8)
+);
+
+CREATE TABLE user_session
+(
+    id         VARCHAR(255) PRIMARY KEY,
+    expires_at DATETIME     NOT NULL,
+    user_id    VARCHAR(255) NOT NULL REFERENCES user (id)
+);
