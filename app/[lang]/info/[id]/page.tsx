@@ -1,7 +1,7 @@
 "use server"
 import LaptopRepository from "@/common/repository/LaptopRepository";
 import LaptopForm from "@/components/LaptopForm";
-import UserRepository from "@/common/repository/UserRepository";
+import UserRepository from "@/common/repository/LaptopUserRepository";
 import {ILaptopUser} from "@/common/models/ILaptopUser";
 import BackButton from "@/components/BackButton";
 import TranslateServer from "@/components/TranslateServer";

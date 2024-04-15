@@ -1,8 +1,11 @@
 import {Lucia} from "lucia";
 import {Mysql2Adapter} from "@lucia-auth/adapter-mysql";
 import {dataBasePoolConnection} from "@/common/database";
+import {GitHub} from "arctic";
 
-const adapter = new Mysql2Adapter(dataBasePoolConnection, {
+export const github = new GitHub(process.env.GITHUB_CLIENT_ID!, process.env.GITHUB_CLIENT_SECRET!);
+
+const adapter = new Mysql2Adapter(dataBasePoolConnection.promise(), {
     user: "user", //user scheme name
     session: "user_session" //session scheme name
 });
@@ -19,7 +22,7 @@ export const lucia = new Lucia(adapter, {
     },
     getUserAttributes: (attributes) => {
         return {
-            // attributes has the type of DatabaseUserAttributes
+            // attributes has the type of IAuthUser
             role: attributes.role,
             githubId: attributes.github_id,
             username: attributes.username
@@ -31,13 +34,7 @@ export const lucia = new Lucia(adapter, {
 declare module "lucia" {
     interface Register {
         Lucia: typeof lucia;
-        DatabaseUserAttributes: DatabaseUserAttributes;
+        DatabaseUserAttributes: IAuthUser;
 
     }
-}
-
-interface DatabaseUserAttributes {
-    username: string;
-    role: string;
-    github_id: number;
 }
