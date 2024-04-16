@@ -4,16 +4,16 @@ import {useEffect, useState} from "react";
 import {useParams, useRouter} from "next/navigation";
 import {infoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/TranslateClient";
-import {useSession} from "next-auth/react";
 import AccessDenied from "@/components/AccessDenied";
 import {isAuthorized} from "@/common/sessionhelper";
+import {useSession} from "@/components/SessionContext";
 
 
 export default function Scannow() {
     const [scanResult, setScanResult] = useState("");
     const router = useRouter();
     const params = useParams<{ lang: string }>()
-    const {data: session} = useSession();
+    const {user, session} = useSession();
 
     function scannerCallBack(text: string) {
         setScanResult(text);
@@ -25,7 +25,7 @@ export default function Scannow() {
 
     }, [scanResult])
 
-    if (!isAuthorized(session))
+    if (!isAuthorized(user))
         return <AccessDenied lang={params.lang}/>
 
     return (

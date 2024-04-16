@@ -3,16 +3,17 @@ import {useParams, useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
 import {infoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/TranslateClient";
-import {useSession} from "next-auth/react";
 import AccessDenied from "@/components/AccessDenied";
 import {isAuthorized} from "@/common/sessionhelper";
+import {useSession} from "@/components/SessionContext";
 
 export default function Lookup() {
     const {pending} = useFormStatus()
     const router = useRouter();
     const params = useParams<{ lang: string }>()
-    const {data: session} = useSession();
-    if (!isAuthorized(session))
+
+    const {user, session} = useSession();
+    if (!isAuthorized(user))
         return <AccessDenied lang={params.lang}/>
 
     return (

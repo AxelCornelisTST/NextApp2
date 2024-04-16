@@ -2,6 +2,7 @@ import {Lucia} from "lucia";
 import {Mysql2Adapter} from "@lucia-auth/adapter-mysql";
 import {dataBasePoolConnection} from "@/common/database";
 import {GitHub} from "arctic";
+import {IAuthUser} from "@/common/models/IAuthUser";
 
 export const github = new GitHub(process.env.GITHUB_CLIENT_ID!, process.env.GITHUB_CLIENT_SECRET!);
 

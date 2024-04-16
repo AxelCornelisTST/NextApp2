@@ -1,10 +1,10 @@
-import {ILaptop} from "@/common/models/ILaptop";
+import {ILaptop, LaptopEntity} from "@/common/models/ILaptop";
 import {dataBasePoolConnection} from "@/common/database";
 import {IRepository} from "@/common/repository/IRepository";
 
 //https://github.com/bezkoder/node-js-typescript-mysql-rest-api
 
-class LaptopRepository implements IRepository<ILaptop> {
+class LaptopRepository implements IRepository<LaptopEntity> {
     delete(sn: string): Promise<number> {
         return Promise.resolve(0);
     }
@@ -13,20 +13,20 @@ class LaptopRepository implements IRepository<ILaptop> {
         return Promise.resolve(0);
     }
 
-    retrieveAll(): Promise<ILaptop[]> {
-        let query: string = 'SELECT * FROM laptops';
+    retrieveAll(): Promise<LaptopEntity[]> {
+        let query: string = 'SELECT * FROM laptop';
         return new Promise((resolve, reject) => {
-            dataBasePoolConnection.query<ILaptop[]>(query, (err, res) => {
+            dataBasePoolConnection.query<LaptopEntity[]>(query, (err, res) => {
                 if (err) reject(err);
                 else resolve(res);
             });
         });
     }
 
-    retrieveBy(sn: string): Promise<ILaptop | undefined> {
-        let query: string = 'SELECT * FROM laptops where SerialNumber = ?';
+    retrieveBy(sn: string): Promise<LaptopEntity | undefined> {
+        let query: string = 'SELECT * FROM laptop where SerialNumber = ?';
         return new Promise((resolve, reject) => {
-                dataBasePoolConnection.query<ILaptop[]>(query, [sn], (err, res) => {
+                dataBasePoolConnection.query<LaptopEntity[]>(query, [sn], (err, res) => {
                     if (err) {
                         reject(err);
                     } else
@@ -36,11 +36,11 @@ class LaptopRepository implements IRepository<ILaptop> {
         );
     }
 
-    save(laptop: ILaptop): Promise<ILaptop> {
+    save(laptop: LaptopEntity): Promise<LaptopEntity> {
         return Promise.resolve(laptop);
     }
 
-    update(laptop: ILaptop): Promise<number> {
+    update(laptop: LaptopEntity): Promise<number> {
         return Promise.resolve(0);
     }
 

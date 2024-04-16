@@ -6,7 +6,6 @@ import {ILaptopUser} from "@/common/models/ILaptopUser";
 
 class LaptopUserRepository implements IRepository<ILaptopUser> {
 
-    table = "laptopusers";
 
     delete(id: number): Promise<number> {
         return Promise.resolve(0);
@@ -17,9 +16,9 @@ class LaptopUserRepository implements IRepository<ILaptopUser> {
     }
 
     retrieveAll(): Promise<ILaptopUser[]> {
-        let query: string = 'SELECT * FROM ?';
+        let query: string = 'SELECT * FROM laptopuser';
         return new Promise((resolve, reject) => {
-            dataBasePoolConnection.query<ILaptopUser[]>(query, [this.table], (err, res) => {
+            dataBasePoolConnection.query<ILaptopUser[]>(query, (err, res) => {
                 if (err) reject(err);
                 else resolve(res);
             });
@@ -27,9 +26,9 @@ class LaptopUserRepository implements IRepository<ILaptopUser> {
     }
 
     retrieveBy(id: number): Promise<ILaptopUser | undefined> {
-        let query: string = 'SELECT * FROM ? where UserID = ?';
+        let query: string = 'SELECT * FROM laptopuser where UserID = ?';
         return new Promise((resolve, reject) => {
-                dataBasePoolConnection.query<ILaptopUser[]>(query, [this.table, id], (err, res) => {
+                dataBasePoolConnection.query<ILaptopUser[]>(query, [id], (err, res) => {
                     if (err) {
                         reject(err);
                     } else

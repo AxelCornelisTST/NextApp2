@@ -3,6 +3,7 @@ import {OAuth2RequestError} from "arctic";
 import {generateId} from "lucia";
 import {github, lucia} from "@/app/auth";
 import AuthUserRepository from "@/common/repository/AuthUserRepository";
+import {IAuthUser} from "@/common/models/IAuthUser";
 
 export async function GET(request: Request): Promise<Response> {
     const url = new URL(request.url);
@@ -43,11 +44,12 @@ export async function GET(request: Request): Promise<Response> {
         const userId = generateId(15);
 
         // Replace this with your own DB client.
-        await db.table("user").insert({
+        await AuthUserRepository.save({
             id: userId,
+            role: "",
             github_id: githubUser.id,
             username: githubUser.login
-        });
+        } as IAuthUser);
 
         const session = await lucia.createSession(userId, {});
         const sessionCookie = lucia.createSessionCookie(session.id);

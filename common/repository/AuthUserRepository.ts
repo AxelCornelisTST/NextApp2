@@ -16,7 +16,7 @@ class AuthUserRepository implements IRepository<IAuthUser> {
     }
 
     retrieveBy(id: any): Promise<IAuthUser | undefined> {
-        let query: string = 'SELECT * FROM users where github_id = ?';
+        let query: string = 'SELECT * FROM user where github_id = ?';
         return new Promise((resolve, reject) => {
                 dataBasePoolConnection.query<IAuthUser[]>(query, [id], (err, res) => {
                     if (err) {
@@ -29,7 +29,11 @@ class AuthUserRepository implements IRepository<IAuthUser> {
     }
 
     save(model: IAuthUser): Promise<IAuthUser> {
-        return Promise.resolve(model);
+        let query: string = 'INSERT INTO user (id, role, github_id, username) values(?,?,?,?)';
+        return new Promise((resolve, reject) => {
+            dataBasePoolConnection.query(query, [model.id, model.role, model.github_id, model.username])
+            
+        });
     }
 
     update(model: IAuthUser): Promise<number> {
