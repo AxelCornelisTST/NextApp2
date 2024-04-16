@@ -7,8 +7,8 @@ import {IAuthUser} from "@/common/models/IAuthUser";
 export const github = new GitHub(process.env.GITHUB_CLIENT_ID!, process.env.GITHUB_CLIENT_SECRET!);
 
 const adapter = new Mysql2Adapter(dataBasePoolConnection.promise(), {
-    user: "user", //user scheme name
-    session: "user_session" //session scheme name
+    user: "authUser", //user scheme name
+    session: "userSession" //session scheme name
 });
 
 export const lucia = new Lucia(adapter, {

@@ -1,4 +1,4 @@
-import {ILaptop, LaptopEntity} from "@/common/models/ILaptop";
+import {IDataBaseLaptop, LaptopEntity} from "@/common/models/IDataBaseLaptop";
 import {dataBasePoolConnection} from "@/common/database";
 import {IRepository} from "@/common/repository/IRepository";
 

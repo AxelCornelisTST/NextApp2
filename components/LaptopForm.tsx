@@ -1,10 +1,10 @@
 import {FunctionComponent} from "react";
-import {ILaptop} from "@/common/models/ILaptop";
+import {IDataBaseLaptop} from "@/common/models/IDataBaseLaptop";
 import {ILaptopUser} from "@/common/models/ILaptopUser";
 import TranslateServer from "@/components/TranslateServer";
 
 interface IParams {
-    laptop: ILaptop,
+    laptop: IDataBaseLaptop,
     user: ILaptopUser | undefined,
     lang: string
 }
