@@ -4,7 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import {dir} from 'i18next'
 import {SessionProvider} from "@/components/SessionContext";
-import {validateRequest} from "@/app/login/validateRequest";
+import {validateRequest} from "@/app/[lang]/login/validateRequest";
 
 const languages: string[] = ['en', 'de'];
 

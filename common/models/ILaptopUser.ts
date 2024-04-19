@@ -1,7 +1,7 @@
 import {RowDataPacket} from "mysql2";
 import {Column, Entity} from "typeorm";
 
-interface ILaptopUserBase {
+export interface ILaptopUserBase {
     userID: number;
     name: string;
     familyName: string;
@@ -9,7 +9,7 @@ interface ILaptopUserBase {
     emailOuder2: string;
 }
 
-export interface ILaptopUser extends ILaptopUserBase, RowDataPacket {
+export interface IRowDataLaptopUser extends ILaptopUserBase, RowDataPacket {
 }
 
 @Entity({name: "laptopUser"})

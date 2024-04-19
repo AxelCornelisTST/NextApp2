@@ -1,21 +1,19 @@
 "use server"
-import Image from "next/image";
 import TranslateServer from "@/components/TranslateServer";
-import {getServerSession} from "next-auth";
 import {getSessionName, isAuthorized} from "@/common/sessionhelper";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {validateRequest} from "@/app/[lang]/login/validateRequest";
 
 export default async function Home({params}: { params: { lang: string } }) {
-    const session = await getServerSession(authOptions)
-    const name: string = getSessionName(session);
+    const data = await validateRequest()
+    const name: string = getSessionName(data);
 
     return (
         <div className="items-center flex flex-col justify-between h-max">
             <TranslateServer lang={params.lang} text={'app_title'}
                              className={"text-center py-10 font-bold text-4xl backdrop-blur-sm"}/>
             {
-                session ?
-                    isAuthorized(session) ?
+                data.session ?
+                    isAuthorized(data) ?
                         <TranslateServer lang={params.lang} text={'homepage_greeting'} variables={{name}}
                                          className={"px-10 py-5 text-xl text-center backdrop-blur-sm"}/>
                         :

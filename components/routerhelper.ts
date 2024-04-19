@@ -25,6 +25,6 @@ export function logoutPage() {
 }
 
 export function loginPage() {
-    return "/api/auth/signin";
+    return "./login/github";
 }
 

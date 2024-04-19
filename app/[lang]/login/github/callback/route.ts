@@ -3,7 +3,7 @@ import {OAuth2RequestError} from "arctic";
 import {generateId} from "lucia";
 import {github, lucia} from "@/app/auth";
 import AuthUserRepository from "@/common/repository/AuthUserRepository";
-import {IAuthUser} from "@/common/models/IAuthUser";
+import {IAuthUserBase, IRowDataAuthUser} from "@/common/models/IAuthUser";
 
 export async function GET(request: Request): Promise<Response> {
     const url = new URL(request.url);
@@ -49,7 +49,7 @@ export async function GET(request: Request): Promise<Response> {
             role: "",
             github_id: githubUser.id,
             username: githubUser.login
-        } as IAuthUser);
+        });
 
         const session = await lucia.createSession(userId, {});
         const sessionCookie = lucia.createSessionCookie(session.id);

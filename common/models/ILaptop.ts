@@ -2,7 +2,7 @@ import {RowDataPacket} from "mysql2";
 import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, ValueTransformer,} from "typeorm"
 import {LaptopUserEntity} from "@/common/models/ILaptopUser";
 
-interface ILaptopBase {
+export interface ILaptopBase {
     serialNumber: string,
     brand: string,
     model: string,
@@ -10,7 +10,7 @@ interface ILaptopBase {
     processor: string
 }
 
-export interface IDataBaseLaptop extends ILaptopBase, RowDataPacket {
+export interface IRowDataLaptop extends ILaptopBase, RowDataPacket {
 
 }
 

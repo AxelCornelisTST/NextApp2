@@ -1,10 +1,10 @@
 import {dataBasePoolConnection} from "@/common/database";
 import {IRepository} from "@/common/repository/IRepository";
-import {ILaptopUser} from "@/common/models/ILaptopUser";
+import {ILaptopUserBase, IRowDataLaptopUser} from "@/common/models/ILaptopUser";
 
 //https://github.com/bezkoder/node-js-typescript-mysql-rest-api
 
-class LaptopUserRepository implements IRepository<ILaptopUser> {
+class LaptopUserRepository implements IRepository<ILaptopUserBase> {
 
 
     delete(id: number): Promise<number> {
@@ -15,20 +15,20 @@ class LaptopUserRepository implements IRepository<ILaptopUser> {
         return Promise.resolve(0);
     }
 
-    retrieveAll(): Promise<ILaptopUser[]> {
+    retrieveAll(): Promise<ILaptopUserBase[]> {
         let query: string = 'SELECT * FROM laptopuser';
         return new Promise((resolve, reject) => {
-            dataBasePoolConnection.query<ILaptopUser[]>(query, (err, res) => {
+            dataBasePoolConnection.query<IRowDataLaptopUser[]>(query, (err, res) => {
                 if (err) reject(err);
                 else resolve(res);
             });
         });
     }
 
-    retrieveBy(id: number): Promise<ILaptopUser | undefined> {
-        let query: string = 'SELECT * FROM laptopuser where UserID = ?';
+    retrieveBy(id: number): Promise<ILaptopUserBase | undefined> {
+        let query: string = 'SELECT * FROM laptopuser where userID = ?';
         return new Promise((resolve, reject) => {
-                dataBasePoolConnection.query<ILaptopUser[]>(query, [id], (err, res) => {
+                dataBasePoolConnection.query<IRowDataLaptopUser[]>(query, [id], (err, res) => {
                     if (err) {
                         reject(err);
                     } else
@@ -38,11 +38,11 @@ class LaptopUserRepository implements IRepository<ILaptopUser> {
         );
     }
 
-    save(user: ILaptopUser): Promise<ILaptopUser> {
+    save(user: ILaptopUserBase): Promise<ILaptopUserBase> {
         return Promise.resolve(user);
     }
 
-    update(user: ILaptopUser): Promise<number> {
+    update(user: ILaptopUserBase): Promise<number> {
         return Promise.resolve(0);
     }
 

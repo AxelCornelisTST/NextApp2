@@ -1,4 +1,4 @@
-import {IDataBaseLaptop, LaptopEntity} from "@/common/models/IDataBaseLaptop";
+import {IRowDataLaptop, LaptopEntity} from "@/common/models/ILaptop";
 import {dataBasePoolConnection} from "@/common/database";
 import {IRepository} from "@/common/repository/IRepository";
 
@@ -16,7 +16,7 @@ class LaptopRepository implements IRepository<LaptopEntity> {
     retrieveAll(): Promise<LaptopEntity[]> {
         let query: string = 'SELECT * FROM laptop';
         return new Promise((resolve, reject) => {
-            dataBasePoolConnection.query<LaptopEntity[]>(query, (err, res) => {
+            dataBasePoolConnection.query<IRowDataLaptop[]>(query, (err, res) => {
                 if (err) reject(err);
                 else resolve(res);
             });
@@ -24,9 +24,9 @@ class LaptopRepository implements IRepository<LaptopEntity> {
     }
 
     retrieveBy(sn: string): Promise<LaptopEntity | undefined> {
-        let query: string = 'SELECT * FROM laptop where SerialNumber = ?';
+        let query: string = 'SELECT * FROM laptop where serialNumber = ?';
         return new Promise((resolve, reject) => {
-                dataBasePoolConnection.query<LaptopEntity[]>(query, [sn], (err, res) => {
+                dataBasePoolConnection.query<IRowDataLaptop[]>(query, [sn], (err, res) => {
                     if (err) {
                         reject(err);
                     } else

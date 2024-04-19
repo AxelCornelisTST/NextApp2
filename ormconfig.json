@@ -9,10 +9,10 @@
   "logging": true,
   "migrationsRun": true,
   "entities": [
-    "./common/models/*.ts"
+    "/common/models/**/*.ts"
   ],
   "migrations": [
-    "/migration/*.ts"
+    "/migration/**/*.ts"
   ],
   "cli": {
     "entitiesDir": "/common/models",

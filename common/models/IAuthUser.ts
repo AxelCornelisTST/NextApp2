@@ -1,14 +1,14 @@
 import {RowDataPacket} from "mysql2";
 import {Column, Entity} from "typeorm";
 
-interface IAuthUserBase {
+export interface IAuthUserBase {
     id: string;
     username: string;
     role: string | undefined;
     github_id: string;
 }
 
-export interface IAuthUser extends IAuthUserBase, RowDataPacket {
+export interface IRowDataAuthUser extends IAuthUserBase, RowDataPacket {
 }
 
 @Entity({name: "authUser"})

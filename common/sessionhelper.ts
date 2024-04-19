@@ -1,4 +1,5 @@
-import {Session, User} from "lucia";
+import {User} from "lucia";
+import {SessionData} from "@/common/interface/SessionData";
 
 // export function getSessionMail(user: Session | null): string {
 //     if (!!ses && !!user && !!user.email)
@@ -12,12 +13,14 @@ import {Session, User} from "lucia";
 //     return "";
 // }
 
-export function getSessionName(user: User | null): string {
-    if (!!user && !!user && !!user.username)
-        return user.username;
+export function getSessionName(session: SessionData): string {
+    if (!session || !!session?.session)
+        return "";
+    if (!!session?.user && !!session.user?.username)
+        return session.user.username;
     return "user";
 }
 
-export function isAuthorized(user: User | null): boolean {
-    return !!user && user.role !== "";
+export function isAuthorized(session: SessionData): boolean {
+    return !!session && !!session.user && session.user.role !== "";
 }
