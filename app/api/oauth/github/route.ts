@@ -4,11 +4,11 @@ import {github} from "@/app/auth";
 
 export async function GET(): Promise<Response> {
     const state = generateState();
-    const url = await github.createAuthorizationURL(state);
+    const url = await github.createAuthorizationURL(state, {scopes: ["user:email"]});
 
     cookies().set("github_oauth_state", state, {
         path: "/",
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         httpOnly: true,
         maxAge: 60 * 10,
         sameSite: "lax"

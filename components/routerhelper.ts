@@ -21,10 +21,10 @@ export function aboutPage() {
 }
 
 export function logoutPage() {
-    return "/api/auth/signout";
+    return "/api/oauth/signout";
 }
 
 export function loginPage() {
-    return "./login/github";
+    return "./signin";
 }
 

@@ -1,7 +1,7 @@
 "use server"
 import TranslateServer from "@/components/TranslateServer";
 import {getSessionName, isAuthorized} from "@/common/sessionhelper";
-import {validateRequest} from "@/app/[lang]/login/validateRequest";
+import {validateRequest} from "@/app/api/oauth/validateRequest";
 
 export default async function Home({params}: { params: { lang: string } }) {
     const data = await validateRequest()

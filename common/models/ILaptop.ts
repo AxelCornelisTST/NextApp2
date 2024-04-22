@@ -16,13 +16,13 @@ export interface IRowDataLaptop extends ILaptopBase, RowDataPacket {
 
 @Entity({name: "laptop"})
 export class LaptopEntity implements ILaptopBase {
-    @Column({type: "varchar", nullable: false, unique: true})
+    @Column({type: "string", nullable: false, unique: true})
     serialNumber!: string
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     brand: string;
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     model: string;
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     processor: string;
 
     @ManyToOne(() => LaptopUserEntity, (user) => user.userID, {

@@ -3,7 +3,6 @@ import {OAuth2RequestError} from "arctic";
 import {generateId} from "lucia";
 import {github, lucia} from "@/app/auth";
 import AuthUserRepository from "@/common/repository/AuthUserRepository";
-import {IAuthUserBase, IRowDataAuthUser} from "@/common/models/IAuthUser";
 
 export async function GET(request: Request): Promise<Response> {
     const url = new URL(request.url);
@@ -27,6 +26,7 @@ export async function GET(request: Request): Promise<Response> {
 
         // Replace this with your own DB client.
         const existingUser = await AuthUserRepository.retrieveBy(githubUser.id);
+        console.log(existingUser)
         // db.table("user").where("github_id", "=", githubUser.id).get();
 
         if (existingUser) {
@@ -68,6 +68,7 @@ export async function GET(request: Request): Promise<Response> {
                 status: 400
             });
         }
+        console.log(e)
         return new Response(null, {
             status: 500
         });

@@ -2,7 +2,7 @@ import {Lucia} from "lucia";
 import {Mysql2Adapter} from "@lucia-auth/adapter-mysql";
 import {dataBasePoolConnection} from "@/common/database";
 import {GitHub} from "arctic";
-import {IAuthUser} from "@/common/models/IAuthUser";
+import {AuthUserEntity, IAuthUserBase} from "@/common/models/IAuthUser";
 
 export const github = new GitHub(process.env.GITHUB_CLIENT_ID!, process.env.GITHUB_CLIENT_SECRET!);
 
@@ -18,7 +18,7 @@ export const lucia = new Lucia(adapter, {
         expires: false,
         attributes: {
             // set to `true` when using HTTPS
-            secure: process.env.NODE_ENV === "production"
+            secure: true// process.env.NODE_ENV === "production"
         }
     },
     getUserAttributes: (attributes) => {
@@ -35,7 +35,7 @@ export const lucia = new Lucia(adapter, {
 declare module "lucia" {
     interface Register {
         Lucia: typeof lucia;
-        DatabaseUserAttributes: IAuthUser;
+        DatabaseUserAttributes: AuthUserEntity;
 
     }
 }

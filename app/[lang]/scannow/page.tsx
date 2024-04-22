@@ -13,7 +13,7 @@ export default function Scannow() {
     const [scanResult, setScanResult] = useState("");
     const router = useRouter();
     const params = useParams<{ lang: string }>()
-    const {user, session} = useSession();
+    const session = useSession();
 
     function scannerCallBack(text: string) {
         setScanResult(text);
@@ -25,7 +25,7 @@ export default function Scannow() {
 
     }, [scanResult])
 
-    if (!isAuthorized(user))
+    if (!isAuthorized(session))
         return <AccessDenied lang={params.lang}/>
 
     return (

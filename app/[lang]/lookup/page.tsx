@@ -12,8 +12,8 @@ export default function Lookup() {
     const router = useRouter();
     const params = useParams<{ lang: string }>()
 
-    const {user, session} = useSession();
-    if (!isAuthorized(user))
+    const session = useSession();
+    if (!isAuthorized(session))
         return <AccessDenied lang={params.lang}/>
 
     return (

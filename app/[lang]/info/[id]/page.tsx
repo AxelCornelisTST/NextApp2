@@ -6,7 +6,7 @@ import BackButton from "@/components/BackButton";
 import TranslateServer from "@/components/TranslateServer";
 import AccessDenied from "@/components/AccessDenied";
 import {isAuthorized} from "@/common/sessionhelper";
-import {validateRequest} from "@/app/[lang]/login/validateRequest";
+import {validateRequest} from "@/app/api/oauth/validateRequest";
 import {ILaptopUserBase} from "@/common/models/ILaptopUser";
 
 export default async function Page({params}: { params: { lang: string, id: string } }) {

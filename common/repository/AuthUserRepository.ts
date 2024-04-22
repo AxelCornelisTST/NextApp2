@@ -1,8 +1,9 @@
 import {dataBasePoolConnection} from "@/common/database";
 import {IRepository} from "@/common/repository/IRepository";
-import {IAuthUser} from "@/common/models/IAuthUser";
+import {IAuthUserBase, IRowDataAuthUser} from "@/common/models/IAuthUser";
+import {ResultSetHeader} from "mysql2";
 
-class AuthUserRepository implements IRepository<IAuthUser> {
+class AuthUserRepository implements IRepository<IAuthUserBase> {
     delete(id: any): Promise<number> {
         return Promise.resolve(0);
     }
@@ -11,14 +12,14 @@ class AuthUserRepository implements IRepository<IAuthUser> {
         return Promise.resolve(0);
     }
 
-    retrieveAll(): Promise<IAuthUser[]> {
+    retrieveAll(): Promise<IAuthUserBase[]> {
         return Promise.resolve([]);
     }
 
-    retrieveBy(id: any): Promise<IAuthUser | undefined> {
-        let query: string = 'SELECT * FROM user where github_id = ?';
+    retrieveBy(id: any): Promise<IAuthUserBase | undefined> {
+        let query: string = 'SELECT * FROM authUser where github_id = ?';
         return new Promise((resolve, reject) => {
-                dataBasePoolConnection.query<IAuthUser[]>(query, [id], (err, res) => {
+                dataBasePoolConnection.query<IRowDataAuthUser[]>(query, [id], (err, res) => {
                     if (err) {
                         reject(err);
                     } else
@@ -28,15 +29,14 @@ class AuthUserRepository implements IRepository<IAuthUser> {
         );
     }
 
-    save(model: IAuthUser): Promise<IAuthUser> {
-        let query: string = 'INSERT INTO user (id, role, github_id, username) values(?,?,?,?)';
+    save(model: IAuthUserBase): Promise<IAuthUserBase> {
+        let query: string = 'INSERT INTO authUser (id, role, github_id, username) values(?,?,?,?)';
         return new Promise((resolve, reject) => {
-            dataBasePoolConnection.query(query, [model.id, model.role, model.github_id, model.username])
-            
+            dataBasePoolConnection.query<ResultSetHeader>(query, [model.id, model.role, model.github_id, model.username])
         });
     }
 
-    update(model: IAuthUser): Promise<number> {
+    update(model: IAuthUserBase): Promise<number> {
         return Promise.resolve(0);
     }
 }

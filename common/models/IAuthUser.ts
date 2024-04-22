@@ -15,11 +15,11 @@ export interface IRowDataAuthUser extends IAuthUserBase, RowDataPacket {
 export class AuthUserEntity implements IAuthUserBase {
     @Column({type: "varchar", nullable: false})
     id: string;
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "number", nullable: false})
     github_id: string;
-    @Column({type: "varchar", nullable: true})
+    @Column({type: "string", nullable: true})
     role: string | undefined;
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     username: string;
 
 }

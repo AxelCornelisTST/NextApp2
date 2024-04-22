@@ -14,13 +14,13 @@ export interface IRowDataLaptopUser extends ILaptopUserBase, RowDataPacket {
 
 @Entity({name: "laptopUser"})
 export class LaptopUserEntity implements ILaptopUserBase {
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     emailOuder1: string;
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     emailOuder2: string;
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     familyName: string;
-    @Column({type: "varchar", nullable: false})
+    @Column({type: "string", nullable: false})
     name: string;
     @Column({type: "number", nullable: true, unique: true})
     userID: number;
