@@ -20,11 +20,16 @@ export function aboutPage() {
     return "/$lang/about"
 }
 
-export function logoutPage() {
+export function loginPage() {
+    return "./signin";
+}
+
+export function logoutRoute() {
     return "/api/oauth/signout";
 }
 
-export function loginPage() {
-    return "./signin";
+
+export function loginRoute(): string {
+    return "/api/oauth/github";
 }
 
