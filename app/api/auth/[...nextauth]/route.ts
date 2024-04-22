@@ -4,24 +4,20 @@ import {Adapter} from "next-auth/adapters";
 import {ConnectionOptions} from "typeorm";
 import {SnakeNamingStrategy} from 'typeorm-naming-strategies'
 import NextAuth, {AuthOptions} from "next-auth";
-import * as entities from "@/lib/entities"
+import * as entities from "@/lib/entities";
 
-
-const githubClientId = process.env.GITHUB_ID;
-const githubClientSecret = process.env.GITHUB_SECRET;
-const server = process.env.DB_CONN;
+const githubClientId = process.env.GITHUB_CLIENT_ID;
+const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 if (!githubClientId || !githubClientSecret) {
     throw new Error('GitHub credentials are not provided');
 }
-if (!server)
-    throw new Error('database connection not provided')
 
 const connection: ConnectionOptions = {
     type: "mysql",
-    host: "localhost",
+    host: "192.168.1.4",
     port: 3306,
-    username: "root",
-    password: "root",
+    username: process.env.PRODUCTION_USERNAME,
+    password: process.env.PRODUCTION_PASSWORD,
     database: "inventory",
     namingStrategy: new SnakeNamingStrategy(),
     synchronize: true,
