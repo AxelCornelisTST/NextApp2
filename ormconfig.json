@@ -1,0 +1,21 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "inventory",
+  "synchronize": true,
+  "logging": true,
+  "migrationsRun": true,
+  "entities": [
+    "/common/models/**/*.ts"
+  ],
+  "migrations": [
+    "/migration/**/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "/common/models",
+    "migrationsDir": "/migration"
+  }
+}

@@ -19,5 +19,9 @@ export function getSessionName(ses: Session | null): string {
 }
 
 export function isAuthorized(ses: Session | null): boolean {
-    return !!ses && ses.user.role !== "";
+    return !!ses && !!ses.user && !!ses.user.role;
+}
+
+export function isLoggedIn(ses: Session | null): boolean {
+    return !!ses;
 }

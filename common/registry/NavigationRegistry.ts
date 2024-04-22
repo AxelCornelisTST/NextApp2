@@ -4,8 +4,8 @@ import {aboutPage, homePage, loginPage, logoutPage, lookupPage, scanPage} from "
 export class NavigationRegistry {
     public static values: INav[] = [
         {
-            routeCallback: isAuth => homePage(),
-            nameCallback: isAuth => "button_nav_home"
+            routeCallback: () => homePage(),
+            nameCallback: () => "button_nav_home"
         },
         {
             routeCallback: isAuth => isAuth ? scanPage() : "",
@@ -16,12 +16,12 @@ export class NavigationRegistry {
             nameCallback: isAuth => isAuth ? "button_nav_lookup" : ""
         },
         {
-            routeCallback: isAuth => aboutPage(),
-            nameCallback: isAuth => "button_nav_about"
+            routeCallback: () => aboutPage(),
+            nameCallback: () => "button_nav_about"
         },
         {
-            routeCallback: isAuth => isAuth ? logoutPage() : loginPage(),
-            nameCallback: isAuth => isAuth ? "button_nav_logout" : "button_nav_login"
+            routeCallback: (isAuth, isLogged) => isLogged ? logoutPage() : loginPage(),
+            nameCallback: (isAuth, isLogged) => isLogged ? "button_nav_logout" : "button_nav_login"
         }
     ];
 }

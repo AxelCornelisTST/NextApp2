@@ -1,5 +1,4 @@
 "use server"
-import Image from "next/image";
 import TranslateServer from "@/components/TranslateServer";
 import {getServerSession} from "next-auth";
 import {getSessionName, isAuthorized} from "@/common/sessionhelper";

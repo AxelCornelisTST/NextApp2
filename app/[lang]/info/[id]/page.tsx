@@ -1,13 +1,12 @@
 "use server"
-import LaptopRepository from "@/common/repository/LaptopRepository";
 import LaptopForm from "@/components/LaptopForm";
-import UserRepository from "@/common/repository/UserRepository";
-import {ILaptopUser} from "@/common/models/ILaptopUser";
 import BackButton from "@/components/BackButton";
 import TranslateServer from "@/components/TranslateServer";
 import {getServerSession} from "next-auth";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {authOptions, databaseSource} from "@/app/api/auth/[...nextauth]/route";
 import AccessDenied from "@/components/AccessDenied";
+import {LaptopEntity} from "@/common/models/ILaptop";
+import {LaptopUserEntity} from "@/common/models/ILaptopUser";
 
 export default async function Page({params}: { params: { lang: string, id: string } }) {
     const session = getServerSession(authOptions);
@@ -16,10 +15,10 @@ export default async function Page({params}: { params: { lang: string, id: strin
 
     const id = params && !Array.isArray(params.id) ? params.id : "err";
     const lang = params && !Array.isArray(params.lang) ? params.lang : "en"
-    const laptop = await LaptopRepository.retrieveBy(id);
-    let user: ILaptopUser | undefined
+    const laptop = await databaseSource.getRepository(LaptopEntity).findOneBy({serialNumber: id});
+    let user = undefined
     if (laptop)
-        user = await UserRepository.retrieveBy(laptop.UserID);
+        user = await databaseSource.getRepository(LaptopUserEntity).findOneBy({userID: laptop.laptopUserID.userID});
     return (
         <div className="flex flex-col items-center justify-between p-10">
             <h1 className="flex items-center font-bold text-xl">Laptop Info</h1>

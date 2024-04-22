@@ -1,7 +1,7 @@
 import Github from "next-auth/providers/github";
 import {TypeORMAdapter} from "@auth/typeorm-adapter";
 import {Adapter} from "next-auth/adapters";
-import {ConnectionOptions} from "typeorm";
+import {DataSource, DataSourceOptions} from "typeorm";
 import {SnakeNamingStrategy} from 'typeorm-naming-strategies'
 import NextAuth, {AuthOptions} from "next-auth";
 import * as entities from "@/lib/entities";
@@ -12,7 +12,7 @@ if (!githubClientId || !githubClientSecret) {
     throw new Error('GitHub credentials are not provided');
 }
 
-const connection: ConnectionOptions = {
+const connection: DataSourceOptions = {
     type: "mysql",
     host: "192.168.1.4",
     port: 3306,
@@ -22,6 +22,8 @@ const connection: ConnectionOptions = {
     namingStrategy: new SnakeNamingStrategy(),
     synchronize: true,
 }
+
+export const databaseSource = new DataSource(connection);
 
 export const authOptions: AuthOptions = {
     debug: true,
@@ -50,9 +52,12 @@ export const authOptions: AuthOptions = {
                 60 * 15 //minutes
         },
     callbacks: {
-        async session({session, user}) {
+        async session({session, user, trigger}) {
             // Send properties to the client, like an access_token and user id from a provider.
             session.user.role = user.role
+            // if (trigger === "update")
+            //     session.user.role = user.role
+
             return session
         }
     }
