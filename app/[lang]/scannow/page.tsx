@@ -6,7 +6,7 @@ import {infoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/TranslateClient";
 import {useSession} from "next-auth/react";
 import AccessDenied from "@/components/AccessDenied";
-import {isAuthorized} from "@/common/sessionhelper";
+import {SessionHelper} from "@/common/sessionhelper";
 
 
 export default function Scannow() {
@@ -14,6 +14,7 @@ export default function Scannow() {
     const router = useRouter();
     const params = useParams<{ lang: string }>()
     const {data: session} = useSession();
+    const userSession = new SessionHelper(session);
 
     function scannerCallBack(text: string) {
         setScanResult(text);
@@ -25,7 +26,7 @@ export default function Scannow() {
 
     }, [scanResult])
 
-    if (!isAuthorized(session))
+    if (!userSession.isAuthorized())
         return <AccessDenied lang={params.lang}/>
 
     return (

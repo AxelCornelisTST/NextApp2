@@ -1,23 +1,31 @@
 import {Session} from "next-auth";
 
-export function getSessionMail(ses: Session | null): string {
-    if (!!ses && !!ses.user && !!ses.user.email)
-        return ses.user.email;
-    return "";
-}
+export class SessionHelper {
 
-export function getSessionImg(ses: Session | null): string {
-    if (!!ses && !!ses.user && !!ses.user.image)
-        return ses.user.image;
-    return "";
-}
+    loggedIn: boolean = false;
+    user: any = undefined;
 
-export function getSessionName(ses: Session | null): string {
-    if (!!ses && !!ses.user && !!ses.user.name)
-        return ses.user.name;
-    return "user";
-}
+    constructor(ses: Session | null) {
+        this.loggedIn = !!ses;
+        if (this.loggedIn)
+            this.user = ses?.user
+    }
 
-export function isAuthorized(ses: Session | null): boolean {
-    return !!ses && ses.user.role !== "";
+    getSessionName(): string {
+        if (this.loggedIn && !!this.user)
+            return this.user.name;
+        return "unknown user";
+    }
+
+    isAuthorized(): boolean {
+        return this.loggedIn && (this.isAdmin() || this.isUser());
+    }
+
+    isAdmin(): boolean {
+        return !!this.user && "ADMIN" === this.user.role;
+    }
+
+    isUser(): boolean {
+        return !!this.user && ("USER" === this.user.role);
+    }
 }
