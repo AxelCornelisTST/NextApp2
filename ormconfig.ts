@@ -2,7 +2,7 @@ require('dotenv').config({path: '.env.local'});
 import {DataSource, DataSourceOptions} from "typeorm";
 import {SnakeNamingStrategy} from "typeorm-naming-strategies";
 
-export const connection: DataSourceOptions = {
+const connection: DataSourceOptions = {
     type: "mysql",
     host: process.env.IP,
     port: 3306,
@@ -14,11 +14,9 @@ export const connection: DataSourceOptions = {
     dropSchema: false,
     logging: false,
     synchronize: false,
-    extra: {
-        trustServerCertificate: true
-    },
+    migrationsRun: false,
     entities: ['common/models/*.ts'],
     migrations: ['migrations/*.ts'],
 }
 
-export const databaseSource: DataSource = new DataSource(connection);
+const databaseSource: DataSource = new DataSource(connection);
