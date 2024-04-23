@@ -10,10 +10,6 @@ export interface ILaptopBase {
     processor: string
 }
 
-export interface IRowDataLaptop extends ILaptopBase, RowDataPacket {
-
-}
-
 @Entity({name: "laptop"})
 export class LaptopEntity implements ILaptopBase {
     @Column({type: "string", nullable: false, unique: true})

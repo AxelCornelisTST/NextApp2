@@ -9,9 +9,6 @@ export interface ILaptopUserBase {
     emailOuder2: string;
 }
 
-export interface IRowDataLaptopUser extends ILaptopUserBase, RowDataPacket {
-}
-
 @Entity({name: "laptopUser"})
 export class LaptopUserEntity implements ILaptopUserBase {
     @Column({type: "string", nullable: false})
