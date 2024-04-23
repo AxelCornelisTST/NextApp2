@@ -20,8 +20,8 @@ export class NavigationRegistry {
             nameCallback: () => "button_nav_about"
         },
         {
-            routeCallback: isLogged => isLogged ? logoutPage() : loginPage(),
-            nameCallback: isLogged => isLogged ? "button_nav_logout" : "button_nav_login"
+            routeCallback: (isAuth, isLogged) => isLogged ? logoutPage() : loginPage(),
+            nameCallback: (isAuth, isLogged) => isLogged ? "button_nav_logout" : "button_nav_login"
         }
     ];
 }

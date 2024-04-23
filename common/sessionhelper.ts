@@ -17,8 +17,8 @@ export class SessionHelper {
         return "unknown user";
     }
 
-    isAuthorized(): boolean {
-        return this.loggedIn && (this.isAdmin() || this.isUser());
+    isAuthorized(bypassElevation?: boolean): boolean {
+        return (this.isAdmin() || this.isUser());
     }
 
     isAdmin(): boolean {
