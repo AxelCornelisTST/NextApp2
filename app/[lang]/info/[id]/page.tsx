@@ -18,7 +18,7 @@ export default async function Page({params}: { params: { lang: string, id: strin
     const laptop = await databaseSource.getRepository(LaptopEntity).findOneBy({serialNumber: id});
     let user = undefined
     if (laptop)
-        user = await databaseSource.getRepository(LaptopUserEntity).findOneBy({userID: laptop.laptopUserID.userID});
+        user = await databaseSource.getRepository(LaptopUserEntity).findOneBy({userID: laptop.laptopUser.userID});
     return (
         <div className="flex flex-col items-center justify-between p-10">
             <h1 className="flex items-center font-bold text-xl">Laptop Info</h1>

@@ -6,7 +6,9 @@
     "dev": "next dev --experimental-https",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "createMigration": "typeorm-ts-node-commonjs migration:generate -d ormconfig.ts migrations/migration",
+    "runMigration": "typeorm-ts-node-commonjs migration:run -d ormconfig.ts"
   },
   "dependencies": {
     "@auth/typeorm-adapter": "^1.6.2",
@@ -28,10 +30,12 @@
     "typeorm-naming-strategies": "^4.1.0"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/node": "^20.11.30",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "dotenv": "^16.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8",

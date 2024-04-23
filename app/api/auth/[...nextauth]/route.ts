@@ -1,29 +1,15 @@
 import Github from "next-auth/providers/github";
 import {TypeORMAdapter} from "@auth/typeorm-adapter";
 import {Adapter} from "next-auth/adapters";
-import {DataSource, DataSourceOptions} from "typeorm";
-import {SnakeNamingStrategy} from 'typeorm-naming-strategies'
 import NextAuth, {AuthOptions} from "next-auth";
-import * as entities from "@/lib/entities";
+import * as entities from "@/common/models/entities";
+import {connection} from "@/ormconfig";
 
 const githubClientId = process.env.GITHUB_CLIENT_ID;
 const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 if (!githubClientId || !githubClientSecret) {
     throw new Error('GitHub credentials are not provided');
 }
-
-const connection: DataSourceOptions = {
-    type: "mysql",
-    host: process.env.IP,
-    port: 3306,
-    username: process.env.PRODUCTION_USERNAME,
-    password: process.env.PRODUCTION_PASSWORD,
-    database: "inventory",
-    namingStrategy: new SnakeNamingStrategy(),
-    synchronize: true,
-}
-
-export const databaseSource = new DataSource(connection);
 
 export const authOptions: AuthOptions = {
     debug: true,

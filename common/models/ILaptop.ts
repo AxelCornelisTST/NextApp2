@@ -1,28 +1,19 @@
-import {RowDataPacket} from "mysql2";
-import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, ValueTransformer,} from "typeorm"
-import {LaptopUserEntity} from "@/common/models/ILaptopUser";
-
-export interface ILaptopBase {
-    serialNumber: string,
-    brand: string,
-    model: string,
-    laptopUserID: LaptopUserEntity,
-    processor: string
-}
+import {Column, Entity, ManyToOne, PrimaryColumn,} from "typeorm"
+import {LaptopUserEntity} from "./ILaptopUser";
 
 @Entity({name: "laptop"})
-export class LaptopEntity implements ILaptopBase {
-    @Column({type: "string", nullable: false, unique: true})
+export class LaptopEntity {
+    @PrimaryColumn({type: "varchar", nullable: false, unique: true})
     serialNumber!: string
-    @Column({type: "string", nullable: false})
+    @Column({type: "varchar", nullable: false})
     brand: string;
-    @Column({type: "string", nullable: false})
+    @Column({type: "varchar", nullable: false})
     model: string;
-    @Column({type: "string", nullable: false})
+    @Column({type: "varchar", nullable: false})
     processor: string;
 
-    @ManyToOne(() => LaptopUserEntity, (user) => user.userID, {
+    @ManyToOne(() => LaptopUserEntity, (lue) => lue.userID, {
         createForeignKeyConstraints: true
     })
-    laptopUserID: LaptopUserEntity
+    laptopUser: LaptopUserEntity
 }
