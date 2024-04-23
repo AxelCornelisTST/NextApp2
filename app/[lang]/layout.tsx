@@ -33,7 +33,7 @@ export default function RootLayout({children, params: {lang}}: RootLayoutProps):
     return (
         <html lang={lang} dir={dir(lang)}>
         <NextAuthProvider>
-            <body className={`${inter.className} bgImg`}>
+            <body className={`${inter.className} bgImg dark:bgImg`}>
             <NavBar lang={lang}/>
             {children}
             </body>

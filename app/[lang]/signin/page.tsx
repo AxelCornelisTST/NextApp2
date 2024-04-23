@@ -3,7 +3,6 @@ import {signIn, useSession} from "next-auth/react";
 import {useParams, useRouter} from "next/navigation";
 import Image from "next/image";
 import TranslateClient from "@/components/TranslateClient";
-import {homePage} from "@/components/routerhelper";
 
 export default function CustomLogin() {
 
@@ -12,7 +11,7 @@ export default function CustomLogin() {
     const params = useParams<{ lang: string }>()
 
     if (session) {
-        router.push(homePage());
+        router.push("/");
     }
     return (
         <div className={" flex flex-col items-center justify-between pt-20"}>

@@ -7,7 +7,6 @@ import {SessionHelper} from "@/common/sessionhelper";
 export default async function Home({params}: { params: { lang: string } }) {
     const session = await getServerSession(authOptions)
     const userSession = new SessionHelper(session);
-
     return (
         <div className="items-center flex flex-col justify-between h-max">
             <TranslateServer lang={params.lang} text={'app_title'}
@@ -16,11 +15,11 @@ export default async function Home({params}: { params: { lang: string } }) {
                 userSession.loggedIn ?
                     userSession.isAuthorized() ?
                         <TranslateServer lang={params.lang} text={'homepage_greeting'}
-                                         variables={userSession.getSessionName()}
+                                         variables={{name: userSession.getSessionName()}}
                                          className={"px-10 py-5 text-xl text-center backdrop-blur-sm"}/>
                         :
                         <TranslateServer lang={params.lang} text={'homepage_contact_admin'}
-                                         variables={userSession.getSessionName()}
+                                         variables={{name: userSession.getSessionName()}}
                                          className={"px-10 py-5 text-xl text-center backdrop-blur-sm"}/>
                     :
                     <TranslateServer lang={params.lang} text={'homepage_login_request'}

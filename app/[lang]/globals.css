@@ -6,9 +6,17 @@
     --foreground-rgb: 0, 0, 0;
 }
 
+.bgImg {
+    background: url("/images/bgLight.svg");
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --foreground-rgb: 255, 255, 255;
+    }
+
+    .bgImg {
+        background: url("/images/bg.svg");
     }
 }
 
@@ -20,8 +28,4 @@ body {
     .text-balance {
         text-wrap: balance;
     }
-}
-
-.bgImg {
-    background: url("/images/bg.svg");
 }

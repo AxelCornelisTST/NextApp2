@@ -14,7 +14,7 @@ if (!githubClientId || !githubClientSecret) {
 
 const connection: DataSourceOptions = {
     type: "mysql",
-    host: "192.168.1.4",
+    host: process.env.IP,
     port: 3306,
     username: process.env.PRODUCTION_USERNAME,
     password: process.env.PRODUCTION_PASSWORD,
@@ -34,7 +34,8 @@ export const authOptions: AuthOptions = {
         Github({
             clientId: githubClientId,
             clientSecret: githubClientSecret,
-            allowDangerousEmailAccountLinking: true
+            allowDangerousEmailAccountLinking: true,
+            checks: ['none']
         })
     ],
     adapter: TypeORMAdapter(connection, {entities}) as Adapter,
@@ -55,8 +56,6 @@ export const authOptions: AuthOptions = {
         async session({session, user, trigger}) {
             // Send properties to the client, like an access_token and user id from a provider.
             session.user.role = user.role
-            // if (trigger === "update")
-            //     session.user.role = user.role
 
             return session
         }
