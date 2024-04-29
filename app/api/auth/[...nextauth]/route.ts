@@ -5,6 +5,9 @@ import NextAuth, {AuthOptions} from "next-auth";
 import {DataSource, DataSourceOptions} from "typeorm";
 import {SnakeNamingStrategy} from "typeorm-naming-strategies";
 import * as entities from "@/common/models/entities";
+import {LaptopEntity} from "@/common/models/ILaptop";
+import {LaptopUserEntity} from "@/common/models/ILaptopUser";
+import {AccountEntity, SessionEntity, UserEntity, VerificationTokenEntity} from "@/common/models/entities";
 
 const githubClientId = process.env.GITHUB_CLIENT_ID;
 const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
@@ -23,7 +26,9 @@ const connection: DataSourceOptions = {
     dropSchema: false,
     logging: false,
     synchronize: false,
-    migrationsRun: false
+    migrationsRun: false,
+    cache: {duration: 60000},
+    entities: [LaptopEntity, LaptopUserEntity, UserEntity, SessionEntity, VerificationTokenEntity, AccountEntity],
 }
 
 export const databaseSource: DataSource = new DataSource(connection);
