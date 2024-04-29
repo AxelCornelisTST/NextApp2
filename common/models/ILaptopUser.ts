@@ -12,9 +12,9 @@ export class LaptopUserEntity {
     @Column({type: "varchar", nullable: false})
     familyName: string;
     @Column({type: "varchar", nullable: false})
-    name: string;
+    firstName: string;
 
-    @OneToMany(() => LaptopEntity, (le) => le.laptopUser)
+    @OneToMany( () => LaptopEntity, (le) => le.laptopUser)
     laptop: LaptopEntity[]
 
 }
