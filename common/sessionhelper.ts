@@ -22,10 +22,23 @@ export class SessionHelper {
     }
 
     isAdmin(): boolean {
-        return !!this.user && "ADMIN" === this.user.role;
+        return !!this.user && Roles[Roles.ADMIN] === this.user.role;
     }
 
     isUser(): boolean {
-        return !!this.user && ("USER" === this.user.role);
+        return !!this.user && (Roles[Roles.USER] === this.user.role);
     }
+
+    static isAdmin(role: string): boolean {
+        return Roles[Roles.ADMIN] === role;
+    }
+
+    static isAuthorized(role: string): boolean {
+        return Roles[Roles.ADMIN] === role || Roles[Roles.USER] === role;
+    }
+}
+
+enum Roles {
+    USER,
+    ADMIN
 }
