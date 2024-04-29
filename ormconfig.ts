@@ -19,4 +19,4 @@ const connection: DataSourceOptions = {
     migrations: ['migrations/*.ts'],
 }
 
-const databaseSource: DataSource = new DataSource(connection);
+export const databaseSource: DataSource = new DataSource(connection);
