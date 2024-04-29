@@ -4,6 +4,7 @@ import {Adapter} from "next-auth/adapters";
 import NextAuth, {AuthOptions} from "next-auth";
 import {DataSource, DataSourceOptions} from "typeorm";
 import {SnakeNamingStrategy} from "typeorm-naming-strategies";
+import * as entities from "@/common/models/entities";
 
 const githubClientId = process.env.GITHUB_CLIENT_ID;
 const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
@@ -37,11 +38,10 @@ export const authOptions: AuthOptions = {
         Github({
             clientId: githubClientId,
             clientSecret: githubClientSecret,
-            allowDangerousEmailAccountLinking: true,
-            checks: ['none']
+            allowDangerousEmailAccountLinking: true
         })
     ],
-    adapter: TypeORMAdapter(connection) as Adapter,
+    adapter: TypeORMAdapter(connection, {entities}) as Adapter,
     session:
         {
             // Choose how you want to save the user session.
