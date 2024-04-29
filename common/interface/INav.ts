@@ -1,4 +1,4 @@
 export interface INav {
-    routeCallback: (isAuth: boolean, isLogged: boolean) => string;
-    nameCallback: (isAuth: boolean, isLogged: boolean) => string;
+    routeCallback: (authLevel: string, isLogged: boolean) => string;
+    nameCallback: (authLevel: string, isLogged: boolean) => string;
 }

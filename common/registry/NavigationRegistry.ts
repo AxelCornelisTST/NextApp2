@@ -1,5 +1,6 @@
 import {INav} from "@/common/interface/INav";
 import {aboutPage, homePage, loginPage, logoutPage, lookupPage, scanPage} from "@/components/routerhelper";
+import {SessionHelper} from "@/common/sessionhelper";
 
 export class NavigationRegistry {
     public static values: INav[] = [
@@ -8,20 +9,24 @@ export class NavigationRegistry {
             nameCallback: () => "button_nav_home"
         },
         {
-            routeCallback: isAuth => isAuth ? scanPage() : "",
-            nameCallback: isAuth => isAuth ? "button_nav_scannow" : ""
+            routeCallback: authLevel => SessionHelper.isAuthorized(authLevel) ? scanPage() : "",
+            nameCallback: authLevel => SessionHelper.isAuthorized(authLevel) ? "button_nav_scannow" : ""
         },
         {
-            routeCallback: isAuth => isAuth ? lookupPage() : "",
-            nameCallback: isAuth => isAuth ? "button_nav_lookup" : ""
+            routeCallback: authLevel => SessionHelper.isAuthorized(authLevel) ? lookupPage() : "",
+            nameCallback: authLevel => SessionHelper.isAuthorized(authLevel) ? "button_nav_lookup" : ""
         },
         {
             routeCallback: () => aboutPage(),
             nameCallback: () => "button_nav_about"
         },
         {
-            routeCallback: (isAuth, isLogged) => isLogged ? logoutPage() : loginPage(),
-            nameCallback: (isAuth, isLogged) => isLogged ? "button_nav_logout" : "button_nav_login"
+            routeCallback: (authLevel, isLogged) => isLogged ? logoutPage() : loginPage(),
+            nameCallback: (authLevel, isLogged) => isLogged ? "button_nav_logout" : "button_nav_login"
+        },
+        {
+            routeCallback: authLevel => SessionHelper.isAdmin(authLevel) ? "/admin" : "",
+            nameCallback: authLevel => SessionHelper.isAdmin(authLevel) ? "button_nav_admin" : ""
         }
     ];
 }

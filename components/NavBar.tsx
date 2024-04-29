@@ -40,8 +40,8 @@ const NavBar: FunctionComponent<{ lang: string }> = (props) => {
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             {
                                 NavigationRegistry.values.map(value => {
-                                    let name = value.nameCallback(userSession.isAuthorized(), userSession.loggedIn);
-                                    let route = value.routeCallback(userSession.isAuthorized(), userSession.loggedIn)?.replace("$lang", props.lang);
+                                    let name = value.nameCallback(userSession.user?.role, userSession.loggedIn);
+                                    let route = value.routeCallback(userSession.user?.role, userSession.loggedIn)?.replace("$lang", props.lang);
                                     //empty name skips link
                                     return name ? <Link
                                         onClick={onClick}
