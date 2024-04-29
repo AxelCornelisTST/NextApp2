@@ -1,8 +1,9 @@
-require('dotenv').config({path: '.env.local'});
 import {DataSource, DataSourceOptions} from "typeorm";
 import {SnakeNamingStrategy} from "typeorm-naming-strategies";
 
-const connection: DataSourceOptions = {
+require('dotenv').config({path: '.env.local'});
+
+const ormConnection: DataSourceOptions = {
     type: "mysql",
     host: process.env.IP,
     port: 3306,
@@ -12,11 +13,11 @@ const connection: DataSourceOptions = {
     namingStrategy: new SnakeNamingStrategy(),
 
     dropSchema: false,
-    logging: false,
+    logging: true,
     synchronize: false,
     migrationsRun: false,
-    entities: ['common/models/*.ts'],
-    migrations: ['migrations/*.ts'],
+    entities: [`${__dirname}/common/models/*.ts`],
+    migrations: [`${__dirname}/migrations/*.ts`],
 }
 
-export const databaseSource: DataSource = new DataSource(connection);
+export const migrationDataSource: DataSource = new DataSource(ormConnection);
