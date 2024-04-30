@@ -38,7 +38,7 @@ export class SessionHelper {
     }
 }
 
-enum Roles {
+export enum Roles {
     USER,
     ADMIN
 }
