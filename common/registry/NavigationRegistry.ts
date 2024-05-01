@@ -9,6 +9,10 @@ export class NavigationRegistry {
             nameCallback: () => "button_nav_home"
         },
         {
+            routeCallback: authLevel => SessionHelper.isAdmin(authLevel) ? "/admin" : "",
+            nameCallback: authLevel => SessionHelper.isAdmin(authLevel) ? "button_nav_admin" : ""
+        },
+        {
             routeCallback: authLevel => SessionHelper.isAuthorized(authLevel) ? scanPage() : "",
             nameCallback: authLevel => SessionHelper.isAuthorized(authLevel) ? "button_nav_scannow" : ""
         },
@@ -20,13 +24,10 @@ export class NavigationRegistry {
             routeCallback: () => aboutPage(),
             nameCallback: () => "button_nav_about"
         },
+
         {
             routeCallback: (authLevel, isLogged) => isLogged ? logoutPage() : loginPage(),
             nameCallback: (authLevel, isLogged) => isLogged ? "button_nav_logout" : "button_nav_login"
         },
-        {
-            routeCallback: authLevel => SessionHelper.isAdmin(authLevel) ? "/admin" : "",
-            nameCallback: authLevel => SessionHelper.isAdmin(authLevel) ? "button_nav_admin" : ""
-        }
     ];
 }

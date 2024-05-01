@@ -3,7 +3,6 @@
 import {FunctionComponent} from "react";
 import {useRouter} from "next/navigation";
 import TranslateClient from "@/components/TranslateClient";
-import {param} from "ts-interface-checker";
 
 const ClientButton: FunctionComponent<{ lang: string, route: string, text: string }> = (props) => {
     const router = useRouter();
