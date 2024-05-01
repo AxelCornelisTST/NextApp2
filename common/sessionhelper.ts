@@ -38,7 +38,22 @@ export class SessionHelper {
     }
 }
 
+//roles 'additive', they are ordered by importance. 0 is lowest and the highest role can do everything.
 export enum Roles {
+    NONE,
     USER,
     ADMIN
+}
+
+export function roleByName(name: string): Roles {
+    switch (name) {
+        case Roles[Roles.ADMIN]:
+            return Roles.ADMIN;
+        case Roles[Roles.USER]:
+            return Roles.USER;
+        default:
+        case "":
+        case Roles[Roles.NONE]:
+            return Roles.NONE;
+    }
 }

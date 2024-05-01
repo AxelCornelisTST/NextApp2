@@ -5,12 +5,30 @@ import TranslateClient from "@/components/TranslateClient";
 import {useSession} from "next-auth/react";
 import {useFormState, useFormStatus} from "react-dom";
 import {findUserAction} from "@/common/actions/searchUsers";
+import Card from "@/components/Card";
+import {changeUserRole} from "@/common/actions/upgradeUser";
+import BackButton from "@/components/BackButton";
+
+interface User {
+    name: string,
+    role: string,
+    id: string
+}
 
 export default function Role({params}: { params: { lang: string, id: string } }) {
     const {pending} = useFormStatus()
     const {data: session} = useSession();
     const userSession = new SessionHelper(session);
-    const [state, formAction] = useFormState(findUserAction, {message: ""});
+    const [stateFind, formAction] = useFormState(findUserAction, {message: ""});
+
+    function getObject(message: string): User[] {
+        let result: User[] = []
+        if (message) {
+            result = JSON.parse(message);
+            console.log(result);
+        }
+        return result;
+    }
 
     if (!session || !userSession.isAdmin())
         return <AccessDenied lang={params.lang}/>
@@ -18,7 +36,7 @@ export default function Role({params}: { params: { lang: string, id: string } })
     return (
         <div className="flex flex-col justify-between p-10 items-center">
             <TranslateClient lang={params.lang} text={'title_roles'} className={"font-bold text-xl pd-20"}/>
-            <form className="w-screen max-w-screen-md px-5 pt-10" action={formAction}>
+            <form className="w-screen max-w-screen-md px-5 pt-10 mb-5" action={formAction}>
                 <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -37,9 +55,15 @@ export default function Role({params}: { params: { lang: string, id: string } })
                     </button>
                 </div>
             </form>
-            {
-                state.message
-            }
+            <div className={"grid grid-cols-1 sm:grid-cols-2 gap-2 backdrop-blur-sm pb-5"}>
+                {
+                    getObject(stateFind.message).map((value, index) => {
+                        return <Card lang={params.lang} name={value.name} role={value.role} id={value.id}
+                                     key={value.id}/>
+                    })
+                }
+            </div>
+            <BackButton lang={params.lang}/>
         </div>
     );
 }

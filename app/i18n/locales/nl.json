@@ -1,5 +1,5 @@
 {
-  "access_denied" : "Toegang verboden",
+  "access_denied": "Toegang verboden",
   "button_add_user": "Gebruiker toevoegen",
   "button_back": "Terug",
   "button_nav_about": "Over ons",
@@ -10,7 +10,7 @@
   "button_nav_scannow": "Scannen",
   "button_submit": "Indienen",
   "connection_failed": "De verbinding met de database faalde",
-  "homepage_greeting" : "Hallo {{name}}, u kan de navigatiebalk gebruiken om een scan te starten",
+  "homepage_greeting": "Hallo {{name}}, u kan de navigatiebalk gebruiken om een scan te starten",
   "homepage_login_request": "Log in om onze diensten te gebruiken ",
   "laptop_brand": "Merk",
   "laptop_core": "Core",
@@ -23,5 +23,13 @@
   "title_scan": "Barcode Scannen",
   "user_familyname": "Familienaam",
   "user_name": "Voornaam",
-  "welcome": "Welkom"
+  "welcome": "Welkom",
+  "title_roles": "Rol Toekennen",
+  "card_user": "Gebruiker",
+  "card_role": "Rol",
+  "button_nav_admin": "Admin Settings",
+  "button_admin_role": "Rollen Aanpassen",
+  "card_upgrade": "Elevate",
+  "card_downgrade": "Degrade",
+  "title_admin_page": "Administrator Portaal"
 }

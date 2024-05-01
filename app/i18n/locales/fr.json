@@ -23,5 +23,15 @@
   "title_scan": "Scannez Code Bar",
   "user_familyname": "Nom de Famille",
   "user_name": "Préom",
-  "welcome": "Bienvenue"
+  "welcome": "Bienvenue",
+
+  "title_roles": "Attribution de Role ",
+  "card_user": "Utilisateur",
+  "card_role": "Role",
+  "button_nav_admin": "Outils Administrateur",
+  "button_admin_role": "Editer les Roles",
+  "card_upgrade": "Elever",
+  "card_downgrade": "Dégrader",
+  "title_admin_page": "Portaille Admin"
+
 }

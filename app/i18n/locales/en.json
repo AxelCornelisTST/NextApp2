@@ -26,5 +26,13 @@
   "title_scan": "Scan Laptop Barcode",
   "user_familyname": "Family name",
   "user_name": "Name",
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "title_roles": "Role Assignment",
+  "card_user": "User",
+  "card_role": "Role",
+  "button_nav_admin": "Admin Settings",
+  "button_admin_role": "Edit Roles",
+  "card_upgrade": "Upgrade",
+  "card_downgrade": "Downgrade",
+  "title_admin_page": "Admin Portal"
 }
