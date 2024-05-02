@@ -5,8 +5,7 @@ import TranslateClient from "@/components/TranslateClient";
 import {useSession} from "next-auth/react";
 import {useFormState, useFormStatus} from "react-dom";
 import {findUserAction} from "@/common/actions/searchUsers";
-import Card from "@/components/Card";
-import {changeUserRole} from "@/common/actions/upgradeUser";
+import UserCard from "@/components/cards/UserCard";
 import BackButton from "@/components/BackButton";
 
 interface User {
@@ -33,6 +32,7 @@ export default function Role({params}: { params: { lang: string, id: string } })
     if (!session || !userSession.isAdmin())
         return <AccessDenied lang={params.lang}/>
 
+    const columns: string = getObject(stateFind.message).length > 1 ? "sm:grid-cols-2" : ""
     return (
         <div className="flex flex-col justify-between p-10 items-center">
             <TranslateClient lang={params.lang} text={'title_roles'} className={"font-bold text-xl pd-20"}/>
@@ -55,11 +55,11 @@ export default function Role({params}: { params: { lang: string, id: string } })
                     </button>
                 </div>
             </form>
-            <div className={"grid grid-cols-1 sm:grid-cols-2 gap-2 backdrop-blur-sm pb-5"}>
+            <div className={`grid grid-cols-1 ${columns} gap-2 backdrop-blur-sm pb-5`}>
                 {
                     getObject(stateFind.message).map((value, index) => {
-                        return <Card lang={params.lang} name={value.name} role={value.role} id={value.id}
-                                     key={value.id}/>
+                        return <UserCard lang={params.lang} name={value.name} role={value.role} id={value.id}
+                                         key={value.id}/>
                     })
                 }
             </div>
