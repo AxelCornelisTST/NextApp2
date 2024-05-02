@@ -4,7 +4,7 @@ import TranslateClient from "@/components/TranslateClient";
 import {useFormState} from "react-dom";
 import {changeUserRole} from "@/common/actions/upgradeUser";
 
-const Card: FunctionComponent<{ lang: string, name: string, role: string, id: string }> = (props) => {
+const UserCard: FunctionComponent<{ lang: string, name: string, role: string, id: string }> = (props) => {
     const [stateRole, upgradeAction] = useFormState(changeUserRole, {message: ""});
 
     const [role, setRole] = useState(props.role)
@@ -93,4 +93,4 @@ const Card: FunctionComponent<{ lang: string, name: string, role: string, id: st
     );
 }
 
-export default Card;
+export default UserCard;
