@@ -17,7 +17,7 @@
   "laptop_model": "Model",
   "laptop_serial_number": "S/N",
   "loading": "Laden...",
-  "no_laptop_in_database": "De laptop met serienummer {0} is niet teruggevonden in de database",
+  "no_laptop_in_database": "De laptop met serienummer {{id}} is niet teruggevonden in de database",
   "scanner_error": "Scanner kon niet laden",
   "title_lookup": "Opzoeken",
   "title_scan": "Barcode Scannen",
