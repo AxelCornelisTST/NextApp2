@@ -14,7 +14,6 @@ export async function findUserAction(prev: any, formData: FormData) {
     const result = await databaseSource.getRepository(UserEntity).find({
         select: {name: true, role: true, id: true}, where: {name: Like(`%${rawFormData.name}%`)}
     });
-    console.log(JSON.stringify(result))
     return {
         message: JSON.stringify(result)
     }
