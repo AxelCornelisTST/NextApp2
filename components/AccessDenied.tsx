@@ -1,7 +1,7 @@
 "use client"
 
 import {FunctionComponent} from "react";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 
 const BackButton: FunctionComponent<{ lang: string }> = (props) => {
     return <TranslateClient lang={props.lang} text={'access_denied'}

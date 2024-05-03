@@ -1,6 +1,6 @@
 "use client"
 import BackButton from "@/components/BackButton";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {useParams} from "next/navigation";
 
 export default function EntryNotFound() {

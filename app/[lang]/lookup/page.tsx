@@ -2,7 +2,7 @@
 import {useParams, useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
 import {infoPage} from "@/components/routerhelper";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {useSession} from "next-auth/react";
 import AccessDenied from "@/components/AccessDenied";
 import {SessionHelper} from "@/common/sessionhelper";

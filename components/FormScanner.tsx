@@ -2,7 +2,7 @@
 import {FunctionComponent, useState} from "react";
 import ClientOnly from "@/components/ClientOnly";
 import {Scanner} from "@yudiel/react-qr-scanner";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {useParams} from "next/navigation";
 
 interface Props {

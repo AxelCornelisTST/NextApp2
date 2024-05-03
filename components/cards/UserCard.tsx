@@ -1,6 +1,6 @@
 "use client"
 import {FunctionComponent, useEffect, useState} from "react";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {useFormState} from "react-dom";
 import {changeUserRole} from "@/common/actions/upgradeUser";
 
@@ -11,12 +11,10 @@ const UserCard: FunctionComponent<{ lang: string, name: string, role: string, id
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         setVisible(true)
-        console.log("state changed")
         if (stateRole.role)
             setRole(stateRole.role)
         setTimeout(() => {
             setVisible(false)
-            console.log("timing")
         }, 2250)
     }, [stateRole])
 

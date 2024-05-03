@@ -1,12 +1,12 @@
 insert into laptopuser
-    (user_id, email_ouder1, email_ouder2, family_name, first_name)
-values (0, "test@email", "", "testmans", "frank");
+    (user_id, email_ouder1, email_ouder2, family_name, first_name, klas)
+values (0, "test@email", "", "testmans", "frank", "1 ABC");
 insert into laptopuser
-    (user_id, email_ouder1, email_ouder2, family_name, first_name)
-values (1, "francis.Tester@mail.be", "fransesca@testermail.be", "tafels", "bobby");
+    (user_id, email_ouder1, email_ouder2, family_name, first_name, klas)
+values (1, "francis.Tester@mail.be", "fransesca@testermail.be", "tafels", "bobby", "3 CDE");
 insert into laptopuser
-    (user_id, email_ouder1, email_ouder2, family_name, first_name)
-values (2, "testmail@mail.fr", "", "testmans", "peter");
+    (user_id, email_ouder1, email_ouder2, family_name, first_name, klas)
+values (2, "testmail@mail.fr", "", "testmans", "peter", "5 XYZ");
 
 insert into laptop
     (serial_number, brand, model, processor, laptop_user_user_id)

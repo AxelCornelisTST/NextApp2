@@ -1,6 +1,6 @@
-"use server"
+'use server'
 import BackButton from "@/components/BackButton";
-import TranslateServer from "@/components/TranslateServer";
+import TranslateServer from "@/components/i18n/TranslateServer";
 import {getServerSession} from "next-auth";
 import {authOptions, databaseSource} from "@/app/api/auth/[...nextauth]/route";
 import AccessDenied from "@/components/AccessDenied";
@@ -9,7 +9,7 @@ import {LaptopUserEntity} from "@/common/models/ILaptopUser";
 import InfoCard from "@/components/cards/InfoCard";
 
 export default async function Page({params}: { params: { lang: string, id: string } }) {
-    const session = getServerSession(authOptions);
+    const session = await getServerSession(authOptions);
     if (!session)
         return <AccessDenied lang={params.lang}/>
 
@@ -18,8 +18,12 @@ export default async function Page({params}: { params: { lang: string, id: strin
 
     const id = params && !Array.isArray(params.id) ? params.id : "err";
     const lang = params && !Array.isArray(params.lang) ? params.lang : "en"
-    const laptop = await databaseSource.getRepository(LaptopEntity).findOneBy({serialNumber: id});
+    const laptop = await databaseSource.getRepository(LaptopEntity).findOne({
+        where: {serialNumber: id},
+        relations: ['laptopUser']
+    });
     let user = undefined
+
     if (laptop && laptop.laptopUser)
         user = await databaseSource.getRepository(LaptopUserEntity).findOneBy({userID: laptop.laptopUser.userID});
     return (
@@ -35,7 +39,13 @@ export default async function Page({params}: { params: { lang: string, id: strin
                                       brand: laptop.brand,
                                       details: laptop.processor,
                                       model: laptop.model
-                                  }} user={user ? {name: user.firstName, famName: user.firstName} : undefined}
+                                  }}
+                                  user={user ? {
+                                      name: user.firstName,
+                                      famName: user.familyName,
+                                      klas: user.klas,
+                                      id: user.userID
+                                  } : undefined}
                         />
                     </div>
                     :

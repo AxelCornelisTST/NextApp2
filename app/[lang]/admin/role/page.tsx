@@ -1,7 +1,7 @@
 "use client"
 import AccessDenied from "@/components/AccessDenied";
 import {SessionHelper} from "@/common/sessionhelper";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {useSession} from "next-auth/react";
 import {useFormState, useFormStatus} from "react-dom";
 import {findUserAction} from "@/common/actions/searchUsers";
@@ -24,7 +24,6 @@ export default function Role({params}: { params: { lang: string, id: string } })
         let result: User[] = []
         if (message) {
             result = JSON.parse(message);
-            console.log(result);
         }
         return result;
     }

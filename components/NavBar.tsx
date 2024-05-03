@@ -2,7 +2,7 @@
 import React, {FunctionComponent, useState} from "react";
 import {NavigationRegistry} from "@/common/registry/NavigationRegistry";
 import Link from "next/link";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {useSession} from "next-auth/react";
 import {SessionHelper} from "@/common/sessionhelper";
 

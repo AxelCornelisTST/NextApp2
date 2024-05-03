@@ -2,7 +2,7 @@
 
 import {FunctionComponent} from "react";
 import {useRouter} from "next/navigation";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 
 const BackButton: FunctionComponent<{ lang: string }> = (props) => {
     const router = useRouter();

@@ -1,7 +1,7 @@
 "use server"
 import AccessDenied from "@/components/AccessDenied";
 import {SessionHelper} from "@/common/sessionhelper";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 import ClientButton from "@/components/ClientButton";

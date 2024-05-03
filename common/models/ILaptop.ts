@@ -13,7 +13,7 @@ export class LaptopEntity {
     processor: string;
 
     @ManyToOne(() => LaptopUserEntity, (lue) => lue.userID, {
-        createForeignKeyConstraints: true
+        createForeignKeyConstraints: true, nullable: true
     })
-    laptopUser: LaptopUserEntity
+    laptopUser: LaptopUserEntity | null
 }

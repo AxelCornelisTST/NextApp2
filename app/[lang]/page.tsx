@@ -1,5 +1,5 @@
 "use server"
-import TranslateServer from "@/components/TranslateServer";
+import TranslateServer from "@/components/i18n/TranslateServer";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 import {SessionHelper} from "@/common/sessionhelper";

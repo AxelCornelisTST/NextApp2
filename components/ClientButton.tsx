@@ -2,7 +2,7 @@
 
 import {FunctionComponent} from "react";
 import {useRouter} from "next/navigation";
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 
 const ClientButton: FunctionComponent<{ lang: string, route: string, text: string }> = (props) => {
     const router = useRouter();

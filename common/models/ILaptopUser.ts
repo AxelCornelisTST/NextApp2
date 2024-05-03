@@ -14,6 +14,9 @@ export class LaptopUserEntity {
     @Column({type: "varchar", nullable: false})
     firstName: string;
 
+    @Column({type: "varchar", nullable: false})
+    klas: string;
+
     @OneToMany( () => LaptopEntity, (le) => le.laptopUser)
     laptop: LaptopEntity[]
 

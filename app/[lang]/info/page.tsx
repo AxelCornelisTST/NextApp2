@@ -1,5 +1,5 @@
 "use client"
-import TranslateClient from "@/components/TranslateClient";
+import TranslateClient from "@/components/i18n/TranslateClient";
 import {useRouter} from "next/navigation";
 import {lookupPage} from "@/components/routerhelper";
 
