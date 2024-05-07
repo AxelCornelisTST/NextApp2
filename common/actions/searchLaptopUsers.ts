@@ -1,7 +1,7 @@
 'use server'
 
 import {databaseSource} from "@/app/api/auth/[...nextauth]/route";
-import {Like} from "typeorm";
+import {DataSource, Like} from "typeorm";
 import {LaptopUserEntity} from "@/common/models/ILaptopUser";
 
 export async function findLaptopUserAction(prev: any, formData: FormData) {
@@ -18,12 +18,15 @@ export async function findLaptopUserAction(prev: any, formData: FormData) {
         };
     }
 
+    let dbc: DataSource = databaseSource;
     if (!databaseSource.isInitialized)
-        await databaseSource.initialize();
-    const result = await databaseSource.getRepository(LaptopUserEntity).find({
+        dbc = await databaseSource.initialize();
+
+    const result = await dbc.getRepository(LaptopUserEntity).find({
         select: {firstName: true, familyName: true, userID: true},
         where: [{firstName: Like(`%${rawFormData.name}%`)}, {familyName: Like(`%${rawFormData.name}%`)}]
     });
+    await dbc.destroy();
     return {
         message: JSON.stringify(result),
         prevText: rawFormData.name

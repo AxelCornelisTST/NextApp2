@@ -7,25 +7,30 @@ import AccessDenied from "@/components/AccessDenied";
 import {LaptopEntity} from "@/common/models/ILaptop";
 import {LaptopUserEntity} from "@/common/models/ILaptopUser";
 import InfoCard from "@/components/cards/InfoCard";
+import {DataSource} from "typeorm";
 
 export default async function Page({params}: { params: { lang: string, id: string } }) {
     const session = await getServerSession(authOptions);
     if (!session)
         return <AccessDenied lang={params.lang}/>
 
-    if (!databaseSource.isInitialized)
-        await databaseSource.initialize()
-
     const id = params && !Array.isArray(params.id) ? params.id : "err";
     const lang = params && !Array.isArray(params.lang) ? params.lang : "en"
-    const laptop = await databaseSource.getRepository(LaptopEntity).findOne({
+    let dbc: DataSource = databaseSource;
+    if (!databaseSource.isInitialized)
+        dbc = await databaseSource.initialize();
+
+    const laptop = await dbc.getRepository(LaptopEntity).findOne({
         where: {serialNumber: id},
         relations: ['laptopUser']
     });
     let user = undefined
 
     if (laptop && laptop.laptopUser)
-        user = await databaseSource.getRepository(LaptopUserEntity).findOneBy({userID: laptop.laptopUser.userID});
+        user = await dbc.getRepository(LaptopUserEntity).findOneBy({userID: laptop.laptopUser.userID});
+
+    await dbc.destroy();
+
     return (
         <div className="flex flex-col items-center justify-between p-10">
             <h1 className="flex items-center font-bold text-xl">Laptop Info</h1>
