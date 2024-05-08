@@ -11,7 +11,7 @@ import {DataSource} from "typeorm";
 
 export default async function Page({params}: { params: { lang: string, id: string } }) {
     const session = await getServerSession(authOptions);
-    if (!session)
+    if (!session || !session.user)
         return <AccessDenied lang={params.lang}/>
 
     const id = params && !Array.isArray(params.id) ? params.id : "err";
@@ -24,11 +24,11 @@ export default async function Page({params}: { params: { lang: string, id: strin
         where: {serialNumber: id},
         relations: ['laptopUser']
     });
+    console.log(laptop)
     let user = undefined
 
     if (laptop && laptop.laptopUser)
         user = await dbc.getRepository(LaptopUserEntity).findOneBy({userID: laptop.laptopUser.userID});
-
     await dbc.destroy();
 
     return (
@@ -43,7 +43,8 @@ export default async function Page({params}: { params: { lang: string, id: strin
                                       sn: laptop.serialNumber,
                                       brand: laptop.brand,
                                       details: laptop.processor,
-                                      model: laptop.model
+                                      model: laptop.model,
+                                      inRepair: laptop.isBeingRepaired
                                   }}
                                   user={user ? {
                                       name: user.firstName,

@@ -32,6 +32,7 @@
   "button_admin_role": "Editer les Roles",
   "card_upgrade": "Elever",
   "card_downgrade": "Dégrader",
-  "title_admin_page": "Portaille Admin"
+  "title_admin_page": "Portaille Admin",
+  "send_mail": "Envoyer Mail"
 
 }

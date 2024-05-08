@@ -20,7 +20,7 @@ const azureClientSecret = process.env.AZURE_CLIENT_SECRET;
 const azureTenantId = process.env.AZURE_TENANT_ID;
 
 if (!azureClientId || !azureClientSecret || !azureTenantId) {
-    throw new Error('GitHub credentials are not provided');
+    throw new Error('azure credentials are not provided');
 }
 
 const connection: DataSourceOptions = {
