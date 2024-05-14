@@ -1,6 +1,6 @@
 "use client"
 import FormScanner from "@/components/FormScanner";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useParams, useRouter} from "next/navigation";
 import {infoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/i18n/TranslateClient";
@@ -18,13 +18,9 @@ export default function Scannow() {
 
     function scannerCallBack(text: string) {
         setScanResult(text);
-    }
-
-    useEffect(() => {
         if (scanResult)
-            router.push(infoPage(scanResult));
-
-    }, [scanResult])
+            router.push(infoPage(scanResult))
+    }
 
     if (!userSession.isAuthorized())
         return <AccessDenied lang={params.lang}/>

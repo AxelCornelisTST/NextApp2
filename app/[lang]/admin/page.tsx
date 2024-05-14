@@ -3,7 +3,7 @@ import AccessDenied from "@/components/AccessDenied";
 import {SessionHelper} from "@/common/sessionhelper";
 import TranslateClient from "@/components/i18n/TranslateClient";
 import {getServerSession} from "next-auth";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {authOptions} from "@/app/api/authdetails";
 import ButtonClient from "@/components/ButtonClient";
 import BackButton from "@/components/BackButton";
 

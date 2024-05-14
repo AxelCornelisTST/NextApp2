@@ -2,7 +2,8 @@
 import BackButton from "@/components/BackButton";
 import TranslateServer from "@/components/i18n/TranslateServer";
 import {getServerSession} from "next-auth";
-import {authOptions, databaseSource} from "@/app/api/auth/[...nextauth]/route";
+import {authOptions, databaseSource} from "@/app/api/authdetails";
+
 import AccessDenied from "@/components/AccessDenied";
 import {LaptopEntity} from "@/common/models/ILaptop";
 import {LaptopUserEntity} from "@/common/models/ILaptopUser";

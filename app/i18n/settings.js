@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 export const fallbackLng = 'en'
 export const languages = [fallbackLng, 'nl', 'fr']
 export const defaultNS = 'translation'

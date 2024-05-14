@@ -3,7 +3,7 @@ import {redirect} from "next/navigation";
 import Image from "next/image";
 import TranslateServer from "@/components/i18n/TranslateServer";
 import {getServerSession} from "next-auth";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {authOptions} from "@/app/api/authdetails";
 import ButtonGithub from "@/components/ButtonGithub";
 
 export default async function CustomLogin({params}: { params: { lang: string } }) {
