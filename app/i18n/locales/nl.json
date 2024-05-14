@@ -31,5 +31,6 @@
   "button_admin_role": "Rollen Aanpassen",
   "card_upgrade": "Elevate",
   "card_downgrade": "Degrade",
-  "title_admin_page": "Administrator Portaal"
+  "title_admin_page": "Administrator Portaal",
+  "send_mail": "Email sturen"
 }

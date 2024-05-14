@@ -9,14 +9,14 @@ insert into laptopuser
 values (2, "testmail@mail.fr", "", "testmans", "peter", "5 XYZ");
 
 insert into laptop
-    (serial_number, brand, model, processor, laptop_user_user_id)
-values ("PF3075", "lenovo", "e14", "i5", null);
+    (serial_number, brand, model, processor)
+values ("PF3075", "lenovo", "e14", "i5");
 insert into laptop
-    (serial_number, brand, model, processor, laptop_user_user_id)
-values ("PF1234", "asus", "testmodel", "i5", null);
+    (serial_number, brand, model, processor)
+values ("PF1234", "asus", "testmodel", "i5");
 insert into laptop
-    (serial_number, brand, model, processor, laptop_user_user_id)
-values ("SN578QRP", "dell", "testmodel", "I3", null);
+    (serial_number, brand, model, processor)
+values ("SN578QRP", "dell", "testmodel", "I3");
 insert into laptop
     (serial_number, brand, model, processor, laptop_user_user_id)
 values ("PF3076", "lenovo", "e14", "i5", 0);

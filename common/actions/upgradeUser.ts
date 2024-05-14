@@ -1,4 +1,5 @@
 "use server"
+require('dotenv').config({path: '.env.local'});
 import {databaseSource} from "@/app/api/auth/[...nextauth]/route";
 import {UserEntity} from "@/common/models/entities";
 import {roleByName, Roles} from "@/common/sessionhelper";

@@ -34,5 +34,6 @@
   "button_admin_role": "Edit Roles",
   "card_upgrade": "Upgrade",
   "card_downgrade": "Downgrade",
-  "title_admin_page": "Admin Portal"
+  "title_admin_page": "Admin Portal",
+  "send_mail": "Send Email"
 }

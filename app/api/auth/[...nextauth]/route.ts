@@ -5,15 +5,24 @@ import NextAuth, {AuthOptions} from "next-auth";
 import {DataSource, DataSourceOptions} from "typeorm";
 import {SnakeNamingStrategy} from "typeorm-naming-strategies";
 import * as entities from "@/common/models/entities";
-import {AccountEntity, SessionEntity, UserEntity, VerificationTokenEntity} from "@/common/models/entities";
 import {LaptopEntity} from "@/common/models/ILaptop";
 import {LaptopUserEntity} from "@/common/models/ILaptopUser";
+import {AccountEntity, SessionEntity, UserEntity, VerificationTokenEntity} from "@/common/models/entities";
 
 const githubClientId = process.env.GITHUB_CLIENT_ID;
 const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 if (!githubClientId || !githubClientSecret) {
     throw new Error('GitHub credentials are not provided');
 }
+
+const azureClientId = process.env.AZURE_CLIENT_ID;
+const azureClientSecret = process.env.AZURE_CLIENT_SECRET;
+const azureTenantId = process.env.AZURE_TENANT_ID;
+
+if (!azureClientId || !azureClientSecret || !azureTenantId) {
+    throw new Error('azure credentials are not provided');
+}
+
 const connection: DataSourceOptions = {
     type: "mysql",
     host: process.env.IP,
