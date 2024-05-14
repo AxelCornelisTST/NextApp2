@@ -1,9 +1,13 @@
 import {NextResponse} from 'next/server'
 import acceptLanguage from 'accept-language'
 import {cookieName, fallbackLng, languages} from './app/i18n/settings'
-export const dynamic = 'force-dynamic'
 
 acceptLanguage.languages(languages)
+
+//image exclusion
+export const config = {
+    matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico).*)']
+}
 
 export async function middleware(req) {
     //localisation
