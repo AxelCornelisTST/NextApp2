@@ -5,6 +5,7 @@ import Link from "next/link";
 import TranslateClient from "@/components/i18n/TranslateClient";
 import {useSession} from "next-auth/react";
 import {SessionHelper} from "@/common/sessionhelper";
+import Image from "next/image";
 
 const NavBar: FunctionComponent<{ lang: string }> = (props) => {
 
@@ -20,9 +21,11 @@ const NavBar: FunctionComponent<{ lang: string }> = (props) => {
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
                     <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img
+                        <Image
+                            width={32}
+                            height={32}
                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcEz2AILsAIzsAIzsAIzsAIzsAIzsAIvsAIzsAIzsAIwhq+IlquElquEkquFBmdclquElquElquElquElquHsAIwlquElquHsts12AAAAGHRSTlMADofd//WdGU5kMR1rgkEHzv+f+ei4uVdQyHBuAAAAq0lEQVR4Ac1OBRLDMAxzMZyU+/+fLkrtMRyvKthnnYD+hKpu2rbr1TtOtwzznmPYF7KDprIYzTthn6eF9Dm2zjeNpZHF+eBjKmTPTWRxw1gwJVb2QmqKo2B2XFaKVa7cl+Ofj1xTmb5dacM1EgVMX6TrEa+qhFvADvGWp1lJUBIdNkhnesAOkn6SEze6g+M+kvmIhQWl7U7PvrPP1ZOfX1whSVcPRx/hHJ0PF/GECxazqOV6AAAAAElFTkSuQmCC"
-                            className="h-8" alt="Flowbite Logo"/>
+                            alt={"logo"} className="h-8 w-8"/>
                         <span
                             className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Laptop Inventory</span>
                     </a>

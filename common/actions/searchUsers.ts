@@ -1,8 +1,8 @@
 'use server'
 
-import {databaseSource} from "@/app/api/auth/[...nextauth]/route";
 import {UserEntity} from "@/common/models/entities";
 import {DataSource, Like} from "typeorm";
+import {databaseSource} from "@/app/api/authdetails";
 
 export async function findUserAction(prev: any, formData: FormData) {
     const rawFormData = {

@@ -1,6 +1,6 @@
 "use server"
 require('dotenv').config({path: '.env.local'});
-import {databaseSource} from "@/app/api/auth/[...nextauth]/route";
+import {databaseSource} from "@/app/api/authdetails";
 import {UserEntity} from "@/common/models/entities";
 import {roleByName, Roles} from "@/common/sessionhelper";
 import {DataSource} from "typeorm";

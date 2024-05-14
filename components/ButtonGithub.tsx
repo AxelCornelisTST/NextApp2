@@ -4,7 +4,6 @@ import {FunctionComponent} from "react";
 import {useRouter} from "next/navigation";
 import TranslateClient from "@/components/i18n/TranslateClient";
 import {signIn} from "next-auth/react";
-import TranslateServer from "@/components/i18n/TranslateServer";
 
 const ButtonGithub: FunctionComponent<{ lang: string }> = (props) => {
     const router = useRouter();

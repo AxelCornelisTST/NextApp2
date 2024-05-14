@@ -1,9 +1,6 @@
 'use server'
-
-import {databaseSource} from "@/app/api/auth/[...nextauth]/route";
-import {LaptopUserEntity} from "@/common/models/ILaptopUser";
+import {databaseSource} from "@/app/api/authdetails";
 import {LaptopEntity} from "@/common/models/ILaptop";
-import Integer from "@zxing/library/es2015/core/util/Integer";
 import {DataSource} from "typeorm";
 
 export async function markLaptopForRepairAction(prev: any, formData: FormData) {

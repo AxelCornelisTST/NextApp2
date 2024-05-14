@@ -1,4 +1,4 @@
-import {FormEventHandler, FunctionComponent} from "react";
+import {FunctionComponent} from "react";
 
 const AcceptModal: FunctionComponent<{ open: boolean, onClose: () => void, formRef: string }> = (props) => {
     return <div tabIndex={-1}

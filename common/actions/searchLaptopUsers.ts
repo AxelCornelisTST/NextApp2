@@ -1,8 +1,8 @@
 'use server'
 
-import {databaseSource} from "@/app/api/auth/[...nextauth]/route";
 import {DataSource, Like} from "typeorm";
 import {LaptopUserEntity} from "@/common/models/ILaptopUser";
+import {databaseSource} from "@/app/api/authdetails";
 
 export async function findLaptopUserAction(prev: any, formData: FormData) {
     const rawFormData = {

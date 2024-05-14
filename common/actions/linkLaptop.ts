@@ -1,10 +1,10 @@
 'use server'
 
-import {databaseSource} from "@/app/api/auth/[...nextauth]/route";
 import {LaptopUserEntity} from "@/common/models/ILaptopUser";
 import {LaptopEntity} from "@/common/models/ILaptop";
 import Integer from "@zxing/library/es2015/core/util/Integer";
 import {DataSource} from "typeorm";
+import {databaseSource} from "@/app/api/authdetails";
 
 export async function updateLaptopAction(prev: any, formData: FormData) {
     const rawFormData = {
