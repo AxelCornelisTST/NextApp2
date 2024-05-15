@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  nextjs:
+    user: nextjs
+    environment:
+      {
+        GITHUB_CLIENT_ID: a,
+        GITHUB_CLIENT_SECRET: b,
+        NEXTAUTH_URL: c,
+        AZURE_CLIENT_ID: d,
+        AZURE_CLIENT_SECRET: e,
+        AZURE_TENANT_ID: f,
+        RESEND_API_KEY: g,
+        PRODUCTION_USERNAME: h,
+        PRODUCTION_PASSWORD: i,
+        IP: j,
+      }
+    image: nextjs:latest
+    container_name: nextjs
+    ports:
+      - "3000:3000"
+    restart: always
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/ssl:/etc/nginx/ssl:ro
+    restart: always

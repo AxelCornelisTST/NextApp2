@@ -37,3 +37,5 @@ next-env.d.ts
 /.env.local
 
 certificates
+docker-compose.yml
+docker-compose.cf.yml
