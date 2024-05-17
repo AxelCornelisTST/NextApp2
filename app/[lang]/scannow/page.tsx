@@ -2,7 +2,7 @@
 import FormScanner from "@/components/FormScanner";
 import {useState} from "react";
 import {useParams, useRouter} from "next/navigation";
-import {infoPage} from "@/components/routerhelper";
+import {laptopInfoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/i18n/TranslateClient";
 import {useSession} from "next-auth/react";
 import AccessDenied from "@/components/AccessDenied";
@@ -19,7 +19,7 @@ export default function Scannow() {
     function scannerCallBack(text: string) {
         setScanResult(text);
         if (scanResult)
-            router.push(infoPage(scanResult))
+            router.push(laptopInfoPage(scanResult))
     }
 
     if (!userSession.isAuthorized())

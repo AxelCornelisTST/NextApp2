@@ -24,6 +24,7 @@
   "scanner_error": "Scanner could not load",
   "title_lookup": "Lookup",
   "title_scan": "Scan Laptop Barcode",
+  "title_about": "About",
   "user_familyname": "Family name",
   "user_name": "Name",
   "welcome": "Welcome",
@@ -36,4 +37,5 @@
   "card_downgrade": "Downgrade",
   "title_admin_page": "Admin Portal",
   "send_mail": "Send Email"
+
 }

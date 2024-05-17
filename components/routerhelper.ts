@@ -1,7 +1,17 @@
-export function infoPage(data: string) {
+export function laptopInfoPage(data: string) {
     if (data)
-        return "./info/" + data
+        return "./lookup/" + data
     return homePage()
+}
+
+export function userInfoPage(data: string) {
+    if (data)
+        return "./laptopuser/" + data
+    return homePage()
+}
+
+export function userPage(data: string) {
+        return "$lang/laptopuser"
 }
 
 export function scanPage() {

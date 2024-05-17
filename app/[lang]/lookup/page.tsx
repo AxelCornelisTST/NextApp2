@@ -1,7 +1,7 @@
 "use client"
 import {useParams, useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
-import {infoPage} from "@/components/routerhelper";
+import {laptopInfoPage} from "@/components/routerhelper";
 import TranslateClient from "@/components/i18n/TranslateClient";
 import {useSession} from "next-auth/react";
 import AccessDenied from "@/components/AccessDenied";
@@ -23,7 +23,7 @@ export default function Lookup() {
 
             <form className="w-screen max-w-screen-md px-5 pt-10" onSubmit={event => {
                 event.preventDefault();
-                router.push(infoPage((event.currentTarget.elements[0] as HTMLInputElement).value))
+                router.push(laptopInfoPage((event.currentTarget.elements[0] as HTMLInputElement).value))
             }}>
                 <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

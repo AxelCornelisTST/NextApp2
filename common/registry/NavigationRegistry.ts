@@ -21,8 +21,8 @@ export class NavigationRegistry {
             nameCallback: authLevel => SessionHelper.isAuthorized(authLevel) ? "button_nav_lookup" : ""
         },
         {
-            routeCallback: () => aboutPage(),
-            nameCallback: () => "button_nav_about"
+            routeCallback: (authLevel, isLogged) => isLogged ? "" : aboutPage(),
+            nameCallback: (authLevel, isLogged) => isLogged ? "" : "button_nav_about"
         },
 
         {
