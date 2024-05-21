@@ -60,9 +60,9 @@ export default async function Page({params}: { params: { lang: string, id: strin
                         <div className={"error font-bold text-red-700 py-10 text-center"}>
                             <TranslateServer lang={lang} text={"no_laptop_in_database"} variables={{id}}/>
                         </div>
-                        <BackButton lang={lang}/>
                     </div>
             }
+            <BackButton lang={lang}/>
         </div>
     )
 }

@@ -25,7 +25,9 @@ export function homePage() {
 export function lookupPage() {
     return "/$lang/lookup"
 }
-
+export function laptopUserPage() {
+    return "/$lang/laptopuser"
+}
 export function aboutPage() {
     return "/$lang/about"
 }
