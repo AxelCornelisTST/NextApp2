@@ -13,20 +13,18 @@
     "runMigration": "typeorm-ts-node-commonjs migration:run -d ormconfig.ts"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.3",
-
     "@auth/typeorm-adapter": "^1.6.2",
     "@yudiel/react-qr-scanner": "^2.0.0-beta.3",
     "accept-language": "^3.0.18",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.1",
     "i18next-resources-to-backend": "^1.2.0",
-    "mysql2": "^3.9.3",
     "net": "^1.0.2",
+    "next": "14.2.3",
     "next-auth": "^4.24.7",
+    "react": "^18",
     "react-cookie": "^7.1.4",
+    "react-dom": "^18",
     "react-i18next": "^14.1.0",
     "resend": "^3.2.0",
     "tls": "^0.0.1",
@@ -34,17 +32,16 @@
     "typeorm-naming-strategies": "^4.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3",
-
     "autoprefixer": "^10.0.1",
     "dotenv": "^16.4.5",
-    "ts-node": "^10.9.2"
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
   }
 }
