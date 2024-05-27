@@ -11,25 +11,28 @@ export function userInfoPage(data: string) {
 }
 
 export function userPage(data: string) {
-        return "$lang/laptopuser"
+        return "/laptopuser"
 }
 
 export function scanPage() {
-    return "/$lang/scannow"
+    return "/scannow"
 }
 
 export function homePage() {
-    return "/$lang"
+    return "/"
 }
 
+export function adminPage() {
+    return "/admin"
+}
 export function lookupPage() {
-    return "/$lang/lookup"
+    return "/lookup"
 }
 export function laptopUserPage() {
-    return "/$lang/laptopuser"
+    return "/laptopuser"
 }
 export function aboutPage() {
-    return "/$lang/about"
+    return "/about"
 }
 
 export function logoutPage() {
