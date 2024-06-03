@@ -1,7 +1,7 @@
 "use client"
 import {useParams, useRouter} from "next/navigation";
 import {useFormStatus} from 'react-dom'
-import {laptopInfoPage} from "@/components/routerhelper";
+import {laptopInfoPage} from "@/common/routerhelper";
 import TranslateClient from "@/components/i18n/TranslateClient";
 import {useSession} from "next-auth/react";
 import AccessDenied from "@/components/AccessDenied";

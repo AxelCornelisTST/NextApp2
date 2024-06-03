@@ -1,5 +1,5 @@
 "use client"
-import {useTranslation} from '@/app/i18n/client'
+import {useTranslation} from '@/i18n/client'
 
 export default function TranslateClient(params: { lang: string, text: any, variables?: {}, className?: string }) {
     const {t} = useTranslation(params.lang)

@@ -2,7 +2,7 @@
 import {FunctionComponent} from "react";
 import TranslateClient from "@/components/i18n/TranslateClient";
 import {LaptopEntity} from "@/common/models/ILaptop";
-import {laptopInfoPage, lookupPage} from "@/components/routerhelper";
+import {laptopInfoPage, lookupPage} from "@/common/routerhelper";
 
 const UserCard: FunctionComponent<{
     lang: string,

@@ -56,22 +56,14 @@ export const authOptions: NextAuthOptions = {
     adapter: TypeORMAdapter(connection, {entities}) as Adapter,
     session:
         {
-            // Choose how you want to save the user session.
-            // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.
-            // If you use an `adapter` however, we default it to `"database"` instead.
-            // You can still force a JWT session by explicitly defining `"jwt"`.
             // When using `"database"`, the session cookie will only contain a `sessionToken` value,
             // which is used to look up the session in the database.
             strategy: "database",
-            //expressed in seconds
-            maxAge:
-                60 * 15 //minutes
+            maxAge: 60 * 15 //minutes
         },
     callbacks: {
         async session({session, user, trigger}) {
-            // Send properties to the client, like an access_token and user id from a provider.
             session.user.role = user.role
-
             return session
         }
     }
