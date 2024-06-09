@@ -54,26 +54,28 @@ export default function Scannow() {
                 {
                     show &&
                     <Scanner
-                        onResult={text => {
-                            setLoading(true)
-                            setShow(false);
-                            setScanResult(text)
-                        }}
-                        onError={error => {
-                            setError(true);
-                        }}
-                        options={{
-                            constraints: {
-                                facingMode: "environment",
-                                height: {max: 740, min: 144, ideal: 1080},
-                                width: {max: 740, min: 144, ideal: 1920}
+                        onScan={
+                            detectedCodes => {
+                                if (detectedCodes) {
+                                    setLoading(true)
+                                    setShow(false)
+                                    setScanResult(detectedCodes[0].rawValue)
+                                }
                             }
+                        }
+                        constraints={{
+                            facingMode: "environment",
+                            height: {max: 740, min: 144, ideal: 1080},
+                            width: {max: 740, min: 144, ideal: 1920}
                         }}
                         styles={{video: {}}}
-                        enabled={show}
+                        allowMultiple={false}
+                        // enabled={show}
                         components={{
                             audio: false,
-                            tracker: true
+                            finder: true,
+                            torch: true,
+                            onOff: show
                         }}
                     />
                 }

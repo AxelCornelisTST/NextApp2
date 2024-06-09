@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@auth/typeorm-adapter": "^1.6.2",
-    "@yudiel/react-qr-scanner": "^2.0.0-beta.3",
+    "@yudiel/react-qr-scanner": "^2.0.1",
     "accept-language": "^3.0.18",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.1",
