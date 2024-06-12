@@ -8,7 +8,7 @@ import {
     logoutPage,
     lookupPage,
     scanPage
-} from "@/components/routerhelper";
+} from "@/common/routerhelper";
 import {SessionHelper} from "@/common/sessionhelper";
 
 export class NavigationRegistry {
