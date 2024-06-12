@@ -15,7 +15,7 @@ const connection: DataSourceOptions = {
     port: 3306,
     username: process.env.PRODUCTION_USERNAME,
     password: process.env.PRODUCTION_PASSWORD,
-    database: "inventory",
+    database: process.env.DB_NAME,
     namingStrategy: new SnakeNamingStrategy(),
 
     dropSchema: false,
