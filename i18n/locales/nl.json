@@ -1,6 +1,8 @@
 {
   "access_denied": "Toegang verboden",
   "button_add_user": "Gebruiker toevoegen",
+  "button_azure":"Inloggen met Azure",
+  "button_github":"Inloggen met GitHub",
   "button_back": "Terug",
   "button_nav_about": "Over ons",
   "button_nav_home": "Start",

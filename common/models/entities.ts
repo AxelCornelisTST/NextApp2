@@ -58,7 +58,7 @@ export class AccountEntity {
     @Column({type: "varchar", nullable: true})
     refresh_token!: string | null
 
-    @Column({type: "varchar", nullable: true})
+    @Column({type: "longtext", nullable: true})
     access_token!: string | null
 
     @Column({
@@ -74,7 +74,7 @@ export class AccountEntity {
     @Column({type: "varchar", nullable: true})
     scope!: string | null
 
-    @Column({type: "varchar", nullable: true})
+    @Column({type: "longtext", nullable: true})
     id_token!: string | null
 
     @Column({type: "varchar", nullable: true})
