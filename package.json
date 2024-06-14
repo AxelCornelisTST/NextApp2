@@ -10,7 +10,11 @@
     "clear_database": "typeorm-ts-node-commonjs schema:drop -d ormconfig.ts",
     "sync_database": "typeorm-ts-node-commonjs schema:sync -d ormconfig.ts",
     "createMigration": "typeorm-ts-node-commonjs migration:generate -d ormconfig.ts migrations/migration",
-    "runMigration": "typeorm-ts-node-commonjs migration:run -d ormconfig.ts"
+    "runMigration": "typeorm-ts-node-commonjs migration:run -d ormconfig.ts",
+    "revertMigration": "typeorm-ts-node-commonjs migration:revert -d ormconfig.ts",
+    "dockerBuildNextJS": "docker build -t nextjs:latest -f docker/Dockerfile .",
+    "dockerBuildNginx": "docker build -t nginx:latest -f docker/nginx/Dockerfile .",
+    "dockerRun": "docker compose up"
   },
   "dependencies": {
     "@auth/typeorm-adapter": "^1.6.2",

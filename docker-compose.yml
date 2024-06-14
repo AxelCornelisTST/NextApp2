@@ -1,3 +1,4 @@
+#https://stackoverflow.com/questions/74185594/how-to-deploy-a-next-js-app-on-https-ssl-connection-with-docker
 version: "3.9"
 services:
   nextjs:
@@ -9,13 +10,15 @@ services:
     ports:
       - "3000:3000"
     restart: always
-#    network_mode: host
-#  nginx:
-#    image: nginx:latest
-#    container_name: nginx
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    volumes:
-#      - /etc/ssl:/etc/nginx/ssl:ro
-#    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - nextjs
+    volumes:
+      - /etc/ssl:/etc/nginx/ssl:ro
+    restart: always
