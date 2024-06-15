@@ -3,6 +3,8 @@
   "button_add_user": "Ajouter utiliseteur",
   "button_back": "Retour",
   "button_nav_about": "A propos",
+  "button_azure":"Se connecter avec Azure",
+  "button_github":"Se connecter avec GitHub",
   "button_nav_home": "Acceuil",
   "button_nav_login": "Se Connecter",
   "button_nav_logout": "Se Déconnecter",

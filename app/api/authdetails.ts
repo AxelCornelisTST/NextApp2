@@ -8,6 +8,7 @@ import {NextAuthOptions} from "next-auth";
 import Github from "next-auth/providers/github";
 import {Adapter} from "next-auth/adapters";
 import {TypeORMAdapter} from "@auth/typeorm-adapter";
+import AzureAD from "next-auth/providers/azure-ad";
 
 const connection: DataSourceOptions = {
     type: "mysql",
@@ -15,7 +16,7 @@ const connection: DataSourceOptions = {
     port: 3306,
     username: process.env.PRODUCTION_USERNAME,
     password: process.env.PRODUCTION_PASSWORD,
-    database: "inventory",
+    database: process.env.DB_NAME,
     namingStrategy: new SnakeNamingStrategy(),
 
     dropSchema: false,
@@ -50,6 +51,12 @@ export const authOptions: NextAuthOptions = {
         Github({
             clientId: githubClientId,
             clientSecret: githubClientSecret,
+            allowDangerousEmailAccountLinking: true
+        }),
+        AzureAD({
+            clientId: azureClientId,
+            clientSecret: azureClientSecret,
+            tenantId: azureTenantId,
             allowDangerousEmailAccountLinking: true
         })
     ],

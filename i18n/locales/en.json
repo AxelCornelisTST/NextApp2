@@ -2,6 +2,7 @@
   "access_denied": "Access Denied",
   "app_title": "Laptop Inventory Database Scanner",
   "button_add_user": "Add User",
+  "button_azure":"Sign in with Azure",
   "button_back": "Go Back",
   "button_github": "Sign in with GitHub",
   "button_nav_about": "About",

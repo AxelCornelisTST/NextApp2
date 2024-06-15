@@ -5,6 +5,7 @@ import TranslateServer from "@/components/i18n/TranslateServer";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/authdetails";
 import ButtonGithub from "@/components/ButtonGithub";
+import ButtonMicrosoft from "@/components/ButtonMicrosoft";
 
 export default async function CustomLogin({params}: { params: { lang: string } }) {
 
@@ -22,8 +23,9 @@ export default async function CustomLogin({params}: { params: { lang: string } }
             <TranslateServer lang={params.lang} text={"button_nav_login"}
                              className={"text-2xl mb-10 font-bold text-center "}/>
 
-            <div className={"border-2 border-blue-300 p-20 rounded-2xl backdrop-blur-sm"}>
+            <div className={"border-2 border-blue-300 p-20 rounded-2xl backdrop-blur-sm space-y-4"}>
                 <ButtonGithub lang={params.lang}/>
+                <ButtonMicrosoft lang={params.lang}/>
             </div>
 
         </div>)
